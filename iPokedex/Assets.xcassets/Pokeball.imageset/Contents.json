@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-pokÃ©ball-30.png",
+      "filename" : "icons8-pokeball-30.png",
       "scale" : "1x"
     },
     {
@@ -11,7 +11,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-pokÃ©ball-75.png",
+      "filename" : "icons8-pokeball-75.png",
       "scale" : "3x"
     }
   ],
