@@ -28,3 +28,10 @@ Clic dessus et apres c'est l'inconnu mdr
 enfin nan il y a 2 choix :
 1. La branche master n'a pas été modifiée depuis que vous avez créé votre branche dans ce cas la EZ PZ, on merge la PR et done.
 2.  La branche master a été modifiée depuis que vous avez créé votre branche et la je sais pas comment ca se passe, parce qu'il faut rebase (je crois que c'est le mot) c'est a dire ajouter les changements de master a votre branche et enfin, merge votre branche sur master et la c'est bon, next branche, next fonctionnalité.
+
+
+Pour changer de branche localement (genre pour voir le taff qu'a fait un autre sur une autre branche :
+```
+git fetch origin <NomDeLaBranche>
+git checkout <NomDeLaBranche>
+```
