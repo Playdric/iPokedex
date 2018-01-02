@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
         //Url de l'API
         let endpoint : String = "http://pokeapi.co/api/v2/pokemon/"
         
+        
+        
         //test de la validité de l'url
         guard let url = URL(string: endpoint) else{
             print("error : cannot create URL")
