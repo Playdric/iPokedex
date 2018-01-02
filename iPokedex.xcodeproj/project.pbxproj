@@ -14,6 +14,8 @@
 		824BF3E61FEFE9F10018463E /* iPokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824BF3E51FEFE9F10018463E /* iPokedexUITests.swift */; };
 		824BF3F51FEFECA30018463E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824BF3F31FEFECA30018463E /* MainViewController.swift */; };
 		C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */; };
+		C35E35691FFBF445006EF5E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E35671FFBF445006EF5E5 /* DetailViewController.swift */; };
+		C35E356A1FFBF445006EF5E5 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35E35681FFBF445006EF5E5 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		824BF3E71FEFE9F10018463E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824BF3F31FEFECA30018463E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		C35E35671FFBF445006EF5E5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C35E35681FFBF445006EF5E5 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				824BF3CC1FEFE9F10018463E /* Assets.xcassets */,
 				824BF3CE1FEFE9F10018463E /* LaunchScreen.storyboard */,
 				824BF3D11FEFE9F10018463E /* Info.plist */,
+				C35E35671FFBF445006EF5E5 /* DetailViewController.swift */,
+				C35E35681FFBF445006EF5E5 /* DetailViewController.xib */,
 			);
 			path = iPokedex;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 				824BF3D01FEFE9F10018463E /* LaunchScreen.storyboard in Resources */,
 				C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */,
 				824BF3CD1FEFE9F10018463E /* Assets.xcassets in Resources */,
+				C35E356A1FFBF445006EF5E5 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C35E35691FFBF445006EF5E5 /* DetailViewController.swift in Sources */,
 				824BF3C61FEFE9F10018463E /* AppDelegate.swift in Sources */,
 				824BF3F51FEFECA30018463E /* MainViewController.swift in Sources */,
 			);
