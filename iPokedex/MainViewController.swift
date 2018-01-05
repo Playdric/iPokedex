@@ -13,12 +13,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchImageView: UIImageView!
     @IBOutlet weak var pokedexImageView: UIImageView!
-    @IBOutlet weak var battleImageView: UIImageView!
+    @IBOutlet weak var allPokemonView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(allPokemonViewClick(_:)))
+        self.allPokemonView.addGestureRecognizer(gestureRecognizer)
         //Url de l'API
         let endpoint : String = "http://pokeapi.co/api/v2/pokemon/"
         
@@ -73,5 +74,9 @@ class MainViewController: UIViewController {
 
         
     }
-
+    @objc
+    func allPokemonViewClick(_ sender: UITapGestureRecognizer) {
+        let vc = AllPokemonsViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
 }

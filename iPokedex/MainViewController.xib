@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="iPokedex" customModuleProvider="target">
             <connections>
+                <outlet property="allPokemonView" destination="tTy-wF-EsU" id="4dZ-AJ-AbF"/>
                 <outlet property="pokedexImageView" destination="SAF-4o-8ad" id="aXb-Ok-YgR"/>
                 <outlet property="searchImageView" destination="IU4-ye-HWD" id="O64-Rl-lUx"/>
                 <outlet property="searchTextField" destination="LnF-o7-wEb" id="Npl-8x-Gg4"/>
