@@ -97,9 +97,9 @@
 		824BF3C41FEFE9F10018463E /* iPokedex */ = {
 			isa = PBXGroup;
 			children = (
-				C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */,
+				ACEDA1662001857200B89F84 /* model */,
+				ACEDA1652001855A00B89F84 /* view */,
 				824BF3C51FEFE9F10018463E /* AppDelegate.swift */,
-				824BF3F31FEFECA30018463E /* MainViewController.swift */,
 				824BF3CC1FEFE9F10018463E /* Assets.xcassets */,
 				824BF3CE1FEFE9F10018463E /* LaunchScreen.storyboard */,
 				824BF3D11FEFE9F10018463E /* Info.plist */,
@@ -123,6 +123,22 @@
 				824BF3E71FEFE9F10018463E /* Info.plist */,
 			);
 			path = iPokedexUITests;
+			sourceTree = "<group>";
+		};
+		ACEDA1652001855A00B89F84 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */,
+				824BF3F31FEFECA30018463E /* MainViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		ACEDA1662001857200B89F84 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
