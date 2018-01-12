@@ -15,6 +15,7 @@ class AllPokemonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Tous les pokemons"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -40,7 +41,6 @@ extension AllPokemonViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("ok")
         let alert = UIAlertController(title: "Annention", message: "\(self.pokemons[indexPath.row].getName())", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
             NSLog("The \"OK\" alert occured.")
