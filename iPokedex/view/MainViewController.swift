@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.title = "iPokedex"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "About us", style: .plain, target: self, action: #selector(touchAboutButton))
-
         
         //Url de l'API
         let endpoint : String = "https://pokeapi.co/api/v2/pokemon/?limit=949"
