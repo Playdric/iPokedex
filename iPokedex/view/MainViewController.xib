@@ -59,6 +59,7 @@
                                 <action selector="btnAllPokemonList:" destination="-1" eventType="touchUpInside" id="6cH-XU-fxZ"/>
                             </connections>
                         </button>
+
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

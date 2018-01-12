@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pokedexImageView: UIImageView!
     @IBOutlet weak var battleImageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -74,7 +73,7 @@ class MainViewController: UIViewController {
 
         
     }
-    
+  
     @IBAction func btnAllPokemonList(_ sender: Any) {
         self.present(AllPokemonViewController(), animated: true, completion: nil)
     }
