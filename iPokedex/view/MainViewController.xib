@@ -68,20 +68,14 @@
             <constraints>
                 <constraint firstItem="IU4-ye-HWD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="19M-Wr-cW5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tTy-wF-EsU" secondAttribute="bottom" id="40T-v5-Poz"/>
-<<<<<<< HEAD
-=======
                 <constraint firstItem="tTy-wF-EsU" firstAttribute="top" secondItem="IU4-ye-HWD" secondAttribute="bottom" constant="10" id="6sD-Yr-OgH"/>
->>>>>>> b9d8ca532de0dd3cb9c6a2e43b9e1c645beb09b5
                 <constraint firstItem="LnF-o7-wEb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="AmY-lZ-GG0"/>
                 <constraint firstItem="IU4-ye-HWD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="JF2-Gh-1GJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tTy-wF-EsU" secondAttribute="trailing" constant="20" id="LFi-ii-nwj"/>
-<<<<<<< HEAD
                 <constraint firstItem="tTy-wF-EsU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jmr-zR-ANp"/>
                 <constraint firstItem="tTy-wF-EsU" firstAttribute="top" secondItem="IU4-ye-HWD" secondAttribute="bottom" constant="10" id="nEc-db-IjE"/>
-=======
                 <constraint firstItem="LnF-o7-wEb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="b7i-zW-hbe"/>
                 <constraint firstItem="tTy-wF-EsU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jmr-zR-ANp"/>
->>>>>>> b9d8ca532de0dd3cb9c6a2e43b9e1c645beb09b5
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IU4-ye-HWD" secondAttribute="trailing" constant="20" id="qQZ-Mb-ubW"/>
                 <constraint firstItem="IU4-ye-HWD" firstAttribute="leading" secondItem="LnF-o7-wEb" secondAttribute="trailing" constant="10" id="xCY-Zm-SvQ"/>
                 <constraint firstItem="LnF-o7-wEb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="yNb-Vd-W08"/>
