@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "iPokedex"
 
         
         //Url de l'API
@@ -75,7 +76,6 @@ class MainViewController: UIViewController {
     }
   
     @IBAction func btnAllPokemonList(_ sender: Any) {
-        self.present(AllPokemonViewController(), animated: true, completion: nil)
     }
 
 }
