@@ -18,10 +18,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "iPokedex"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "About us", style: .plain, target: self, action: #selector(touchAboutButton))
 
         
         //Url de l'API
-        let endpoint : String = "http://pokeapi.co/api/v2/pokemon/"
+        let endpoint : String = "https://pokeapi.co/api/v2/pokemon/?limit=949"
         
         //test de la validité de l'url
         guard let url = URL(string: endpoint) else{
@@ -76,6 +77,11 @@ class MainViewController: UIViewController {
     }
   
     @IBAction func btnAllPokemonList(_ sender: Any) {
+        self.navigationController?.pushViewController(AllPokemonViewController(), animated: true)
+    }
+    
+    @IBAction func touchAboutButton() {
+        self.navigationController?.pushViewController(AboutViewController(), animated: true)
     }
 
 }
