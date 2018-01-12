@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "iPokedex"
         
         //Url de l'API
         let endpoint : String = "http://pokeapi.co/api/v2/pokemon/"
