@@ -73,5 +73,9 @@ class MainViewController: UIViewController {
 
         
     }
+  
+    @IBAction func btnAllPokemonList(_ sender: Any) {
+        self.present(AllPokemonViewController(), animated: true, completion: nil)
+    }
 
 }

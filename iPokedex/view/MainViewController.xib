@@ -51,6 +51,15 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8km-bD-9LW">
+                            <rect key="frame" x="143" y="34" width="192" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Go to pokemonList"/>
+                            <connections>
+                                <action selector="btnAllPokemonList:" destination="-1" eventType="touchUpInside" id="6cH-XU-fxZ"/>
+                            </connections>
+                        </button>
+
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
