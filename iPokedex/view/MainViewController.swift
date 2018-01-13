@@ -15,13 +15,15 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pokedexImageView: UIImageView!
     @IBOutlet weak var battleImageView: UIImageView!
     
+    var pokemonList = [Pokemon]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "iPokedex"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "About us", style: .plain, target: self, action: #selector(touchAboutButton))
         
         //Url de l'API
-        let endpoint : String = "https://pokeapi.co/api/v2/pokemon/?limit=949"
+        let endpoint : String = "http://pokeapi.co/api/v2/pokemon/?limit=949"
         
         //test de la validité de l'url
         guard let url = URL(string: endpoint) else{
@@ -29,13 +31,12 @@ class MainViewController: UIViewController {
             return
         }
         
-        let urlRequest = URLRequest(url: url)
         
         //Pour envoyer une request il nous faut une session (doc à lire sur Shared mais c'est par défaut)
         let session = URLSession.shared
         
         //Création de la task avec comme param l'url et la gestion du retour (completionHandler)
-        let task = session.dataTask(with: urlRequest){ data, response, error in
+        let task = session.dataTask(with: url){ data, response, error in
             
             
             //test sur l'existence d'une erreur
@@ -58,25 +59,30 @@ class MainViewController: UIViewController {
                     return
                 }
                 
-                //Si on arrive ici alors on a le resultat de l'API
-                print("Le pokemon est: "+pokemon.description)
-                
-                
-                
+                // Si on arrive ici alors on a le resultat de l'API
+                // print("Le pokemon est: "+pokemon.description)
+                //print(pokemon["results"])
+                guard let nsarray = pokemon["results"] as? NSArray else {
+                    print("error NSArray")
+                    return
+                }
+                self.pokemonList = Pokemon.parseJSON(nsarray: nsarray)
             }catch{
                 print("error trying to convert data to JSON")
                 return
             }
             
         }
-        
+        print("Before task.resume()")
         task.resume()
-
+        print("After task.resume()")
         
     }
   
     @IBAction func btnAllPokemonList(_ sender: Any) {
-        self.navigationController?.pushViewController(AllPokemonViewController(), animated: true)
+        let nextController = AllPokemonViewController()
+        nextController.pokemons = self.pokemonList
+        self.navigationController?.pushViewController(nextController, animated: true)
     }
     
     @IBAction func touchAboutButton() {

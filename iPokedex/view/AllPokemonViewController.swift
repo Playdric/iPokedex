@@ -19,9 +19,6 @@ class AllPokemonViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        for index in 1...100 {
-            pokemons.append(Pokemon(name:"Pikachu\(index)", url:"url"))
-        }
     }
 
 }
