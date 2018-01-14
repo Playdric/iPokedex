@@ -50,46 +50,20 @@ extension AllPokemonViewController: UITableViewDelegate {
     }
     
     public func fetchAllPokemonList() {
-        //Url de l'API
-        let endpoint : String = "http://pokeapi.co/api/v2/pokemon/?limit=949"
-        
-        //test de la validité de l'url
-        guard let url = URL(string: endpoint) else{
+        guard let url = URL(string: "http://pokeapi.co/api/v2/pokemon/?limit=949") else{
             print("error : cannot create URL")
             return
         }
-        
-        
-        //Pour envoyer une request il nous faut une session (doc à lire sur Shared mais c'est par défaut)
-        let session = URLSession.shared
-        
-        //Création de la task avec comme param l'url et la gestion du retour (completionHandler)
-        let task = session.dataTask(with: url){ data, response, error in
-            
-            
-            //test sur l'existence d'une erreur
-            guard error == nil else{
-                print("error calling the url")
-                return
-            }
-            
-            
-            //test sur l'existence des données
+        let task = URLSession.shared.dataTask(with: url){ data, response, error in
             guard let responseData = data else {
                 print("error did not receive data from url")
                 return
             }
-            
             do{
-                //Parsing de la réponse en JSON parce que c'est ce que l'API nous renvoie
                 guard let pokemon = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else{
                     print("error trying to convert data to JSON")
                     return
                 }
-                
-                // Si on arrive ici alors on a le resultat de l'API
-                // print("Le pokemon est: "+pokemon.description)
-                //print(pokemon["results"])
                 guard let nsarray = pokemon["results"] as? NSArray else {
                     print("error NSArray")
                     return
@@ -100,7 +74,6 @@ extension AllPokemonViewController: UITableViewDelegate {
                     self.tableView.isHidden = false
                     self.activityIndicator.isHidden = true
                 }
-                print("Pokemons loaded")
             }catch{
                 print("error trying to convert data to JSON")
                 return
