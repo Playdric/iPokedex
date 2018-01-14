@@ -44,20 +44,10 @@ extension AllPokemonViewController: UITableViewDataSource {
 
 extension AllPokemonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("ok")
-        let alert = UIAlertController(title: "\(pokemons[indexPath.row].getName())", message: "\(pokemons[indexPath.row].getUrl())", preferredStyle: .actionSheet) // ou .alert .actionSheet
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Destructive", style: .destructive))
-        alert.addAction(UIAlertAction(title: "Default", style: .default))
-        self.present(alert, animated: true)
+//        let nextController =
+//        nextController.
+//        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
     }
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        print("ok")
-//        let alert = UIAlertController(title: "Annention", message: "\(self.pokemons[indexPath.row].getName())", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-//            NSLog("The \"OK\" alert occured.")
-//        }))
-//    }
     
     public func fetchAllPokemonList() {
         //Url de l'API
