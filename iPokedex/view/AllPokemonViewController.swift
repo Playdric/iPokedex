@@ -17,7 +17,7 @@ class AllPokemonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.startAnimating()
-        self.title = "Tous les pokemons"
+        self.title = "All pokemons"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.isHidden = true
@@ -35,7 +35,7 @@ extension AllPokemonViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
         let c = self.pokemons[idx].getName()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nimportequoi") ?? UITableViewCell(style: .default, reuseIdentifier: "nimportequoi")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "nameCell")
         cell.textLabel?.text = c
         return cell
     }
