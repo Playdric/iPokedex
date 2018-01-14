@@ -10,15 +10,18 @@ import UIKit
 
 class AllPokemonViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var pokemons: [Pokemon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.activityIndicator.startAnimating()
         self.title = "Tous les pokemons"
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
+        tableView.isHidden = true
+        fetchAllPokemonList()
     }
 
 }
@@ -37,16 +40,84 @@ extension AllPokemonViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let alert = UIAlertController(title: "Annention", message: "\(self.pokemons[indexPath.row].getName())", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
 }
 
 extension AllPokemonViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("ok")
+        let alert = UIAlertController(title: "\(pokemons[indexPath.row].getName())", message: "\(pokemons[indexPath.row].getUrl())", preferredStyle: .actionSheet) // ou .alert .actionSheet
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Destructive", style: .destructive))
+        alert.addAction(UIAlertAction(title: "Default", style: .default))
+        self.present(alert, animated: true)
+    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        print("ok")
+//        let alert = UIAlertController(title: "Annention", message: "\(self.pokemons[indexPath.row].getName())", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
+//            NSLog("The \"OK\" alert occured.")
+//        }))
+//    }
     
+    public func fetchAllPokemonList() {
+        //Url de l'API
+        let endpoint : String = "http://pokeapi.co/api/v2/pokemon/?limit=949"
+        
+        //test de la validité de l'url
+        guard let url = URL(string: endpoint) else{
+            print("error : cannot create URL")
+            return
+        }
+        
+        
+        //Pour envoyer une request il nous faut une session (doc à lire sur Shared mais c'est par défaut)
+        let session = URLSession.shared
+        
+        //Création de la task avec comme param l'url et la gestion du retour (completionHandler)
+        let task = session.dataTask(with: url){ data, response, error in
+            
+            
+            //test sur l'existence d'une erreur
+            guard error == nil else{
+                print("error calling the url")
+                return
+            }
+            
+            
+            //test sur l'existence des données
+            guard let responseData = data else {
+                print("error did not receive data from url")
+                return
+            }
+            
+            do{
+                //Parsing de la réponse en JSON parce que c'est ce que l'API nous renvoie
+                guard let pokemon = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else{
+                    print("error trying to convert data to JSON")
+                    return
+                }
+                
+                // Si on arrive ici alors on a le resultat de l'API
+                // print("Le pokemon est: "+pokemon.description)
+                //print(pokemon["results"])
+                guard let nsarray = pokemon["results"] as? NSArray else {
+                    print("error NSArray")
+                    return
+                }
+                self.pokemons = Pokemon.parseJSON(nsarray: nsarray)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.tableView.isHidden = false
+                    self.activityIndicator.isHidden = true
+                }
+                print("Pokemons loaded")
+            }catch{
+                print("error trying to convert data to JSON")
+                return
+            }
+            
+        }
+        
+        task.resume()
+    }   
 }
