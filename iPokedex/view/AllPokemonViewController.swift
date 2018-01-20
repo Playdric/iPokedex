@@ -9,21 +9,60 @@
 import UIKit
 
 class AllPokemonViewController: UIViewController {
+    
 
+    @IBOutlet weak var networkIssueLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
-    var pokemons: [Pokemon] = []
+    public var pokemons: [Pokemon] = []
+    private let dataModel = AllPokemonViewModel()
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Tous les pokemons"
+        self.title = "All pokemons"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTouchRefresh))
+        viewIsLoading()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        for index in 1...100 {
-            pokemons.append(Pokemon(name:"Pikachu\(index)", url:"url"))
-        }
+        self.dataModel.delegate = self
+        self.dataModel.fetchAllPokemonList()
     }
-
+    
+    // Managing UI elements, the view should be in loading mode
+    func viewIsLoading() {
+        self.activityIndicator.startAnimating()
+        self.activityIndicator.isHidden = false
+        self.networkIssueLabel.isHidden = true
+        self.tableView.isHidden = true
+    }
+    
+    // Managing UI elements, the view should be displaying the list of pokemons
+    func viewIsDisplayingList() {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.networkIssueLabel.isHidden = true
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+    }
+    
+    // Managing UI elements, the view should be in network issue mode
+    func viewIsNetworkIssue() {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.networkIssueLabel.isHidden = false
+        self.tableView.isHidden = true
+    }
+    
+    // When the user click the refrech button
+    @objc func didTouchRefresh() {
+        // Cancel the current task
+        self.dataModel.task?.cancel()
+        self.viewIsLoading()
+        // Re launch the task
+        self.dataModel.fetchAllPokemonList()
+    }
 }
 
 
@@ -35,21 +74,41 @@ extension AllPokemonViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
         let c = self.pokemons[idx].getName()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nimportequoi") ?? UITableViewCell(style: .default, reuseIdentifier: "nimportequoi")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "nameCell")
         cell.textLabel?.text = c
         return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let alert = UIAlertController(title: "Annention", message: "\(self.pokemons[indexPath.row].getName())", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
     
 }
 
 extension AllPokemonViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        Here's the code to push the next controller when a row is ckicked
+    }
+}
+
+// Implementing protocol methods
+extension AllPokemonViewController: DetailsDelegate {
+    // updating the local variable of pôkemons list
+    func updateList(pokemons: [Pokemon]) {
+        self.pokemons = pokemons
+        //The following code will be executed in the main thread
+        DispatchQueue.main.async {
+            self.viewIsDisplayingList()
+        }
+    }
     
+    func networkIssue() {
+        // The following code will be executed in the main thread
+        DispatchQueue.main.async {
+            self.viewIsNetworkIssue()
+        }
+    }
+    
+    func viewLoading() {
+        // The following code will be executed in the main thread
+        DispatchQueue.main.async {
+            self.viewIsLoading()
+        }
+    }
 }

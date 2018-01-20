@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Pokemon: NSObject {
+public class Pokemon: NSObject {
     private var name: String
     private var url: String
     
@@ -23,6 +23,19 @@ class Pokemon: NSObject {
     
     public func getUrl() -> String {
         return self.url
+    }
+    
+    public static func parseJSON(nsarray: NSArray) -> [Pokemon] {
+        var pokemonList = [Pokemon]()
+        for i in 0...nsarray.count-1 {
+            let nsdict = nsarray[i] as! NSDictionary
+            var name = nsdict["name"] as! String
+            let url = nsdict["url"] as! String
+            name = name.capitalized
+            let pokemon = Pokemon(name: name, url: url)
+            pokemonList.append(pokemon)
+        }
+        return pokemonList
     }
     
 }
