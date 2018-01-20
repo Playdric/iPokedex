@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -12,27 +12,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="iPokedex" customModuleProvider="target">
             <connections>
-                <outlet property="searchImageView" destination="IU4-ye-HWD" id="O64-Rl-lUx"/>
-                <outlet property="searchTextField" destination="LnF-o7-wEb" id="Npl-8x-Gg4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search" translatesAutoresizingMaskIntoConstraints="NO" id="IU4-ye-HWD">
-                    <rect key="frame" x="325" y="30" width="30" height="30"/>
-                </imageView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recherche" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LnF-o7-wEb">
-                    <rect key="frame" x="10" y="30" width="305" height="30"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tTy-wF-EsU">
-                    <rect key="frame" x="20" y="70" width="335" height="597"/>
+                    <rect key="frame" x="20" y="85" width="335" height="693"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8km-bD-9LW">
                             <rect key="frame" x="8" y="29" width="100" height="110"/>
@@ -47,20 +36,50 @@
                                 <action selector="btnAllPokemonList:" destination="-1" eventType="touchUpInside" id="6cH-XU-fxZ"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8B-KE-8YL">
+                            <rect key="frame" x="225" y="30" width="100" height="110"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="110" id="0dY-Fu-s1F"/>
+                                <constraint firstAttribute="width" constant="100" id="8J6-B3-Agy"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="kQD-wQ-w5R"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="tbe-0A-B4c"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                            <inset key="titleEdgeInsets" minX="0.0" minY="90" maxX="80" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
+                            <state key="normal" title="Search" image="search-icon-hi">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="btnAllPokemonList:" destination="-1" eventType="touchUpInside" id="2yk-DZ-RNl"/>
+                                <action selector="btnSearch:" destination="-1" eventType="touchUpInside" id="w4w-nz-i8K"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="a8B-KE-8YL" firstAttribute="top" secondItem="tTy-wF-EsU" secondAttribute="top" constant="30" id="8Xm-3z-bZY"/>
+                        <constraint firstAttribute="trailing" secondItem="a8B-KE-8YL" secondAttribute="trailing" constant="10" id="XMW-8K-CIz"/>
+                        <constraint firstAttribute="trailing" secondItem="a8B-KE-8YL" secondAttribute="trailing" constant="10" id="cxE-ba-TeM"/>
+                        <constraint firstAttribute="trailing" secondItem="a8B-KE-8YL" secondAttribute="trailing" constant="10" id="iaC-uq-JNS"/>
+                    </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to iPokedex !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sk2-mZ-XT0">
+                    <rect key="frame" x="10" y="54" width="355" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Sk2-mZ-XT0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="23h-TK-H64"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tTy-wF-EsU" secondAttribute="bottom" id="40T-v5-Poz"/>
-                <constraint firstItem="LnF-o7-wEb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="AmY-lZ-GG0"/>
+                <constraint firstItem="Sk2-mZ-XT0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="4fW-rZ-ZSs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tTy-wF-EsU" secondAttribute="trailing" constant="20" id="LFi-ii-nwj"/>
+                <constraint firstItem="tTy-wF-EsU" firstAttribute="top" secondItem="Sk2-mZ-XT0" secondAttribute="bottom" constant="10" id="TEg-ld-epE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Sk2-mZ-XT0" secondAttribute="trailing" constant="10" id="hod-iv-usp"/>
                 <constraint firstItem="tTy-wF-EsU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jmr-zR-ANp"/>
-                <constraint firstItem="tTy-wF-EsU" firstAttribute="top" secondItem="IU4-ye-HWD" secondAttribute="bottom" constant="10" id="nEc-db-IjE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IU4-ye-HWD" secondAttribute="trailing" constant="20" id="qQZ-Mb-ubW"/>
-                <constraint firstItem="IU4-ye-HWD" firstAttribute="leading" secondItem="LnF-o7-wEb" secondAttribute="trailing" constant="10" id="xCY-Zm-SvQ"/>
-                <constraint firstItem="LnF-o7-wEb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="yNb-Vd-W08"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="25.5" y="51.5"/>
@@ -68,6 +87,6 @@
     </objects>
     <resources>
         <image name="Pokedex" width="100" height="100"/>
-        <image name="Search" width="30" height="30"/>
+        <image name="search-icon-hi" width="600" height="598"/>
     </resources>
 </document>
