@@ -16,13 +16,18 @@ class MainViewController: UIViewController {
     @IBOutlet weak var battleImageView: UIImageView!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "iPokedex"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "About us", style: .plain, target: self, action: #selector(touchAboutButton))
         
     }
-  
+    
+    @IBAction func btnSearch(_ sender: Any) {
+        
+    }
+    
     @IBAction func btnAllPokemonList(_ sender: Any) {
         self.navigationController?.pushViewController(AllPokemonViewController(), animated: true)
     }
