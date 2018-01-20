@@ -9,21 +9,60 @@
 import UIKit
 
 class AllPokemonViewController: UIViewController {
+    
 
+    @IBOutlet weak var networkIssueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
-    var pokemons: [Pokemon] = []
+    public var pokemons: [Pokemon] = []
+    private let dataModel = AllPokemonViewModel()
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.activityIndicator.startAnimating()
         self.title = "All pokemons"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTouchRefresh))
+        viewIsLoading()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        tableView.isHidden = true
-        fetchAllPokemonList()
+        self.dataModel.delegate = self
+        self.dataModel.fetchAllPokemonList()
     }
-
+    
+    // Managing UI elements, the view should be in loading mode
+    func viewIsLoading() {
+        self.activityIndicator.startAnimating()
+        self.activityIndicator.isHidden = false
+        self.networkIssueLabel.isHidden = true
+        self.tableView.isHidden = true
+    }
+    
+    // Managing UI elements, the view should be displaying the list of pokemons
+    func viewIsDisplayingList() {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.networkIssueLabel.isHidden = true
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+    }
+    
+    // Managing UI elements, the view should be in network issue mode
+    func viewIsNetworkIssue() {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.networkIssueLabel.isHidden = false
+        self.tableView.isHidden = true
+    }
+    
+    // When the user click the refrech button
+    @objc func didTouchRefresh() {
+        // Cancel the current task
+        self.dataModel.task?.cancel()
+        self.viewIsLoading()
+        // Re launch the task
+        self.dataModel.fetchAllPokemonList()
+    }
 }
 
 
@@ -44,43 +83,32 @@ extension AllPokemonViewController: UITableViewDataSource {
 
 extension AllPokemonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let nextController =
-//        nextController.
-//        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+//        Here's the code to push the next controller when a row is ckicked
+    }
+}
+
+// Implementing protocol methods
+extension AllPokemonViewController: DetailsDelegate {
+    // updating the local variable of pôkemons list
+    func updateList(pokemons: [Pokemon]) {
+        self.pokemons = pokemons
+        //The following code will be executed in the main thread
+        DispatchQueue.main.async {
+            self.viewIsDisplayingList()
+        }
     }
     
-    public func fetchAllPokemonList() {
-        guard let url = URL(string: "http://pokeapi.co/api/v2/pokemon/?limit=949") else{
-            print("error : cannot create URL")
-            return
+    func networkIssue() {
+        // The following code will be executed in the main thread
+        DispatchQueue.main.async {
+            self.viewIsNetworkIssue()
         }
-        let task = URLSession.shared.dataTask(with: url){ data, response, error in
-            guard let responseData = data else {
-                print("error did not receive data from url")
-                return
-            }
-            do{
-                guard let pokemon = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else{
-                    print("error trying to convert data to JSON")
-                    return
-                }
-                guard let nsarray = pokemon["results"] as? NSArray else {
-                    print("error NSArray")
-                    return
-                }
-                self.pokemons = Pokemon.parseJSON(nsarray: nsarray)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.tableView.isHidden = false
-                    self.activityIndicator.isHidden = true
-                }
-            }catch{
-                print("error trying to convert data to JSON")
-                return
-            }
-            
+    }
+    
+    func viewLoading() {
+        // The following code will be executed in the main thread
+        DispatchQueue.main.async {
+            self.viewIsLoading()
         }
-        
-        task.resume()
-    }   
+    }
 }

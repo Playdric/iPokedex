@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AllPokemonViewController" customModule="iPokedex" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="52F-tu-gRc" id="Zf5-qP-VVL"/>
+                <outlet property="networkIssueLabel" destination="REU-PR-go4" id="NKz-PF-zOR"/>
                 <outlet property="tableView" destination="7Gt-a4-50a" id="aKL-fD-8qU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,11 +30,19 @@
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="52F-tu-gRc">
                     <rect key="frame" x="177" y="50" width="20" height="20"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network issue... :(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REU-PR-go4">
+                    <rect key="frame" x="118.5" y="50" width="137.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="7Gt-a4-50a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5dk-Zo-J70"/>
+                <constraint firstItem="REU-PR-go4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="AkW-xP-h38"/>
                 <constraint firstItem="7Gt-a4-50a" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DAP-6A-3Dr"/>
+                <constraint firstItem="REU-PR-go4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="GbH-XM-yRP"/>
                 <constraint firstItem="52F-tu-gRc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NY3-pn-7JL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7Gt-a4-50a" secondAttribute="bottom" id="ebo-BY-WTz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7Gt-a4-50a" secondAttribute="trailing" id="gZK-Se-Yzp"/>

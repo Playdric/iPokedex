@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Pokemon: NSObject {
+public class Pokemon: NSObject {
     private var name: String
     private var url: String
     
