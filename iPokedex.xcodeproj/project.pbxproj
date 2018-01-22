@@ -13,6 +13,9 @@
 		824BF3DB1FEFE9F10018463E /* iPokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824BF3DA1FEFE9F10018463E /* iPokedexTests.swift */; };
 		824BF3E61FEFE9F10018463E /* iPokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824BF3E51FEFE9F10018463E /* iPokedexUITests.swift */; };
 		824BF3F51FEFECA30018463E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824BF3F31FEFECA30018463E /* MainViewController.swift */; };
+		AC27A85E2013B5FD00ADD374 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27A85C2013B5FD00ADD374 /* SearchViewController.swift */; };
+		AC27A85F2013B5FD00ADD374 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC27A85D2013B5FD00ADD374 /* SearchViewController.xib */; };
+		AC31751B201405E700A997EF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31751A201405E700A997EF /* SearchViewModel.swift */; };
 		AC321EDC200AE34500CC4607 /* AllPokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC321EDB200AE34500CC4607 /* AllPokemonViewModel.swift */; };
 		ACD600CB2008BCCE005CD4DD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD600C92008BCCE005CD4DD /* AboutViewController.swift */; };
 		ACD600CC2008BCCE005CD4DD /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD600CA2008BCCE005CD4DD /* AboutViewController.xib */; };
@@ -52,6 +55,9 @@
 		824BF3E51FEFE9F10018463E /* iPokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPokedexUITests.swift; sourceTree = "<group>"; };
 		824BF3E71FEFE9F10018463E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		824BF3F31FEFECA30018463E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AC27A85C2013B5FD00ADD374 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		AC27A85D2013B5FD00ADD374 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		AC31751A201405E700A997EF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC321EDB200AE34500CC4607 /* AllPokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPokemonViewModel.swift; sourceTree = "<group>"; };
 		ACD600C92008BCCE005CD4DD /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		ACD600CA2008BCCE005CD4DD /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 			children = (
 				ACEDA14D2000F1A900B89F84 /* Pokemon.swift */,
 				AC321EDB200AE34500CC4607 /* AllPokemonViewModel.swift */,
+				AC31751A201405E700A997EF /* SearchViewModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -155,6 +162,8 @@
 				ACEDA16020017FF600B89F84 /* AllPokemonViewController.xib */,
 				ACD600C92008BCCE005CD4DD /* AboutViewController.swift */,
 				ACD600CA2008BCCE005CD4DD /* AboutViewController.xib */,
+				AC27A85C2013B5FD00ADD374 /* SearchViewController.swift */,
+				AC27A85D2013B5FD00ADD374 /* SearchViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 			files = (
 				824BF3D01FEFE9F10018463E /* LaunchScreen.storyboard in Resources */,
 				C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */,
+				AC27A85F2013B5FD00ADD374 /* SearchViewController.xib in Resources */,
 				ACEDA16220017FF600B89F84 /* AllPokemonViewController.xib in Resources */,
 				824BF3CD1FEFE9F10018463E /* Assets.xcassets in Resources */,
 				ACD600CC2008BCCE005CD4DD /* AboutViewController.xib in Resources */,
@@ -297,6 +307,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACEDA14E2000F1A900B89F84 /* Pokemon.swift in Sources */,
+				AC27A85E2013B5FD00ADD374 /* SearchViewController.swift in Sources */,
+				AC31751B201405E700A997EF /* SearchViewModel.swift in Sources */,
 				824BF3C61FEFE9F10018463E /* AppDelegate.swift in Sources */,
 				ACEDA16120017FF600B89F84 /* AllPokemonViewController.swift in Sources */,
 				ACD600CB2008BCCE005CD4DD /* AboutViewController.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 // Protocol to communicate with the ViewController
-protocol DetailsDelegate: class {
+protocol AllPokemonDetailDelegate: class {
     func updateList(pokemons: [Pokemon])
     func networkIssue()
     func viewLoading()
@@ -17,7 +17,7 @@ protocol DetailsDelegate: class {
 
 class AllPokemonViewModel: NSObject {
     
-    weak var delegate: DetailsDelegate?
+    weak var delegate: AllPokemonDetailDelegate?
     var task: URLSessionDataTask?
     
     // In charge of requesting the API and getting the full list of pokemons.
@@ -55,7 +55,7 @@ class AllPokemonViewModel: NSObject {
                     print("error NSArray")
                     return
                 }
-                //To make the ViewController do the work
+                
                 let pokList = Pokemon.parseJSON(nsarray: nsarray)
                 self.delegate?.updateList(pokemons: pokList)
             }catch{

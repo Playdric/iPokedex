@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="iPokedex" customModuleProvider="target">
+            <connections>
+                <outlet property="pokemonTextField" destination="rur-cd-ofd" id="05x-ZW-s5x"/>
+                <outlet property="resultLabel" destination="m05-6K-ynN" id="0bD-I3-mRu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looking for a Pokemon ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ5-9H-RGt">
+                    <rect key="frame" x="10" y="54" width="355" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rur-cd-ofd">
+                    <rect key="frame" x="10" y="85" width="315" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRI-Re-Hqp">
+                    <rect key="frame" x="335" y="85" width="30" height="30"/>
+                    <state key="normal" title="Go"/>
+                    <connections>
+                        <action selector="didTouchPokemon:" destination="-1" eventType="touchUpInside" id="ROd-Rv-2sj"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m05-6K-ynN">
+                    <rect key="frame" x="10" y="124.99999999999999" width="355" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="rur-cd-ofd" firstAttribute="top" secondItem="CJ5-9H-RGt" secondAttribute="bottom" constant="10" id="0hl-9P-Qlo"/>
+                <constraint firstItem="CJ5-9H-RGt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="6Dw-7h-gmD"/>
+                <constraint firstItem="gRI-Re-Hqp" firstAttribute="leading" secondItem="rur-cd-ofd" secondAttribute="trailing" constant="10" id="9BV-mw-bvd"/>
+                <constraint firstItem="gRI-Re-Hqp" firstAttribute="top" secondItem="CJ5-9H-RGt" secondAttribute="bottom" constant="10" id="DYp-wv-8ph"/>
+                <constraint firstItem="m05-6K-ynN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="GzD-zO-NcA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gRI-Re-Hqp" secondAttribute="trailing" constant="10" id="cya-OD-4fn"/>
+                <constraint firstItem="rur-cd-ofd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="eMa-eY-j09"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CJ5-9H-RGt" secondAttribute="trailing" constant="10" id="kOo-FP-5XN"/>
+                <constraint firstItem="m05-6K-ynN" firstAttribute="top" secondItem="rur-cd-ofd" secondAttribute="bottom" constant="10" id="nac-sK-oBu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="m05-6K-ynN" secondAttribute="trailing" constant="10" id="tX4-O4-6fD"/>
+                <constraint firstItem="CJ5-9H-RGt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="usC-j3-cjh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

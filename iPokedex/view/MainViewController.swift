@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func btnSearch(_ sender: Any) {
-        
+        self.navigationController?.pushViewController(SearchViewController(), animated: true)
     }
     
     @IBAction func btnAllPokemonList(_ sender: Any) {

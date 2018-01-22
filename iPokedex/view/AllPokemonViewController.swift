@@ -16,7 +16,6 @@ class AllPokemonViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     public var pokemons: [Pokemon] = []
     private let dataModel = AllPokemonViewModel()
-    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +87,7 @@ extension AllPokemonViewController: UITableViewDelegate {
 }
 
 // Implementing protocol methods
-extension AllPokemonViewController: DetailsDelegate {
+extension AllPokemonViewController: AllPokemonDetailDelegate {
     // updating the local variable of pôkemons list
     func updateList(pokemons: [Pokemon]) {
         self.pokemons = pokemons
