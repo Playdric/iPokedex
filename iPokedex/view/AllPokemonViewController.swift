@@ -78,12 +78,17 @@ extension AllPokemonViewController: UITableViewDataSource {
         cell.textLabel?.text = c
         return cell
     }
-    
+
 }
 
 extension AllPokemonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        Here's the code to push the next controller when a row is ckicked
+        let pokemon = pokemons[indexPath.row]
+        let viewController = DetailViewController()
+        viewController.setCurrentPokemon(pokemon: pokemon)
+        print(pokemon.getName())
+        navigationController?.pushViewController(viewController, animated: true)
+        
     }
 }
 
