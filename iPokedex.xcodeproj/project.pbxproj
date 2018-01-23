@@ -20,6 +20,8 @@
 		ACEDA16120017FF600B89F84 /* AllPokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEDA15F20017FF600B89F84 /* AllPokemonViewController.swift */; };
 		ACEDA16220017FF600B89F84 /* AllPokemonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEDA16020017FF600B89F84 /* AllPokemonViewController.xib */; };
 		C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */; };
+		C3C52D572016000F005A51FA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C52D552016000E005A51FA /* DetailViewController.swift */; };
+		C3C52D582016000F005A51FA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C52D562016000F005A51FA /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		ACEDA15F20017FF600B89F84 /* AllPokemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPokemonViewController.swift; sourceTree = "<group>"; };
 		ACEDA16020017FF600B89F84 /* AllPokemonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllPokemonViewController.xib; sourceTree = "<group>"; };
 		C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		C3C52D552016000E005A51FA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C3C52D562016000F005A51FA /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 		ACEDA164200181E000B89F84 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				C3C52D552016000E005A51FA /* DetailViewController.swift */,
+				C3C52D562016000F005A51FA /* DetailViewController.xib */,
 				824BF3F31FEFECA30018463E /* MainViewController.swift */,
 				C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */,
 				ACEDA15F20017FF600B89F84 /* AllPokemonViewController.swift */,
@@ -268,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				824BF3D01FEFE9F10018463E /* LaunchScreen.storyboard in Resources */,
+				C3C52D582016000F005A51FA /* DetailViewController.xib in Resources */,
 				C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */,
 				ACEDA16220017FF600B89F84 /* AllPokemonViewController.xib in Resources */,
 				824BF3CD1FEFE9F10018463E /* Assets.xcassets in Resources */,
@@ -302,6 +309,7 @@
 				ACD600CB2008BCCE005CD4DD /* AboutViewController.swift in Sources */,
 				824BF3F51FEFECA30018463E /* MainViewController.swift in Sources */,
 				AC321EDC200AE34500CC4607 /* AllPokemonViewModel.swift in Sources */,
+				C3C52D572016000F005A51FA /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
