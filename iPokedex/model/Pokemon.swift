@@ -25,6 +25,45 @@ public class Pokemon: NSObject {
         return self.url
     }
     
+    
+    //structs added to match the needed proprieties from the json
+    struct Detail : Decodable {
+        let name: String
+        let weight: Int
+        let height: Int
+        let stats: [Stats]
+        let sprites: Sprites
+        let types: [Types]
+    }
+    
+    struct Stats : Decodable {
+        let stat: Stat?
+        let effort: Int
+        let base_stat: Int
+        
+    }
+    
+    struct Stat : Decodable {
+        let url: String
+        let name: String
+    }
+    
+    struct Sprites : Decodable { //url of the images (shiney, female, front, back...)
+        let front_default: String?
+        let back_default: String?
+    }
+    
+    struct Types : Decodable {
+        let slot: Int
+        let type: _Type
+    }
+    
+    struct _Type : Decodable {
+        let url: String
+        let name: String
+    }
+
+    
     public static func parseJSON(nsarray: NSArray) -> [Pokemon] {
         var pokemonList = [Pokemon]()
         for i in 0...nsarray.count-1 {

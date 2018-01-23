@@ -8,43 +8,6 @@
 
 import UIKit
 
-struct Detail : Decodable {
-    let name: String
-    let weight: Int
-    let height: Int
-    let stats: [Stats]
-    let sprites: Sprites
-    let types: [Types]
-}
-
-struct Stats : Decodable {
-    let stat: Stat?
-    let effort: Int
-    let base_stat: Int
-    
-}
-
-struct Stat : Decodable {
-    let url: String
-    let name: String
-}
-
-struct Sprites : Decodable { //url of the images (shiney, female, front, back...)
-    let front_default: String?
-    let back_default: String?
-}
-
-struct Types : Decodable {
-    let slot: Int
-    let type: Type
-}
-
-struct Type : Decodable {
-    let url: String
-    let name: String
-}
-
-
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -83,7 +46,7 @@ class DetailViewController: UIViewController {
             }
             
             do{
-                let pokemonDetail = try JSONDecoder().decode(Detail.self, from: data)
+                let pokemonDetail = try JSONDecoder().decode(Pokemon.Detail.self, from: data)
                 print(pokemonDetail)
                 //do delegates
                 
