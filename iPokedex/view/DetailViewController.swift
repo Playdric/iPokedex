@@ -8,11 +8,13 @@
 
 import UIKit
 
-
 struct Detail : Decodable {
     let name: String
     let weight: Int
+    let height: Int
     let stats: [Stats]
+    let sprites: Sprites
+    let types: [Types]
 }
 
 struct Stats : Decodable {
@@ -27,6 +29,22 @@ struct Stat : Decodable {
     let name: String
 }
 
+struct Sprites : Decodable { //url of the images (shiney, female, front, back...)
+    let front_default: String?
+    let back_default: String?
+}
+
+struct Types : Decodable {
+    let slot: Int
+    let type: Type
+}
+
+struct Type : Decodable {
+    let url: String
+    let name: String
+}
+
+
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -35,7 +53,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var defenseLabel: UILabel!
     @IBOutlet weak var baseSPLabel: UILabel!
     @IBOutlet weak var baseSpeedLabel: UILabel!
-    @IBOutlet weak var growRateLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    
+    
     @IBOutlet weak var heightLabel: UILabel!
     
     @IBOutlet weak var pokemonPicture: UIImageView!
@@ -44,9 +64,6 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        nameLabel.text = currentPokemon?.getName()
-        
         
         let jsonUrlString = self.currentPokemon?.getUrl()
         
@@ -68,16 +85,21 @@ class DetailViewController: UIViewController {
             do{
                 let pokemonDetail = try JSONDecoder().decode(Detail.self, from: data)
                 print(pokemonDetail)
+                //do delegates
+                
             }catch let jsonErr {
                 print("Error in serializing the json :", jsonErr)
+                return
             }
             
-            
+
         }.resume()
+        
+
     }
 
     func setCurrentPokemon(pokemon: Pokemon) {
         self.currentPokemon = pokemon
     }
-
+    
 }

@@ -16,12 +16,12 @@
                 <outlet property="baseSPLabel" destination="bjF-Vo-4aM" id="gcb-wj-skd"/>
                 <outlet property="baseSpeedLabel" destination="yw3-ys-A2b" id="nmg-O9-bqe"/>
                 <outlet property="defenseLabel" destination="dIa-hU-1r2" id="QtV-Br-JPn"/>
-                <outlet property="growRateLabel" destination="APh-s9-7cV" id="4GL-7p-gmq"/>
                 <outlet property="heightLabel" destination="2wv-Ev-cmr" id="l6C-vC-PFX"/>
                 <outlet property="hpLabel" destination="uC1-SM-wuC" id="t5Q-Mm-ZiX"/>
                 <outlet property="nameLabel" destination="kRB-zg-FIq" id="2IJ-s3-7D8"/>
                 <outlet property="pokemonPicture" destination="Egr-Zk-aoi" id="Hk8-VR-9sv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="weightLabel" destination="APh-s9-7cV" id="dqL-fS-zP9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -68,7 +68,7 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grow rate : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APh-s9-7cV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APh-s9-7cV">
                             <rect key="frame" x="8" y="210" width="359" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
