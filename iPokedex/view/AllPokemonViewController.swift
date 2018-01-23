@@ -27,7 +27,7 @@ class AllPokemonViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.dataModel.delegate = self
-        self.dataModel.fetchAllPokemonList()
+        self.dataModel.getCount()
     }
     
     // Managing UI elements, the view should be in loading mode
@@ -61,7 +61,7 @@ class AllPokemonViewController: UIViewController {
         self.dataModel.task?.cancel()
         self.viewIsLoading()
         // Re launch the task
-        self.dataModel.fetchAllPokemonList()
+        self.dataModel.getCount()
     }
 }
 
@@ -114,6 +114,12 @@ extension AllPokemonViewController: DetailsDelegate {
         // The following code will be executed in the main thread
         DispatchQueue.main.async {
             self.viewIsLoading()
+        }
+    }
+    
+    func fetchList(count: Int) {
+        DispatchQueue.main.async {
+            self.dataModel.fetchAllPokemonList(count: count)
         }
     }
 }
