@@ -13,6 +13,7 @@ protocol DetailsDelegate: class {
     func updateList(pokemons: [Pokemon])
     func networkIssue()
     func viewLoading()
+    func fetchList(count: Int)
 }
 
 class AllPokemonViewModel: NSObject {
@@ -20,9 +21,8 @@ class AllPokemonViewModel: NSObject {
     weak var delegate: DetailsDelegate?
     var task: URLSessionDataTask?
     
-    // In charge of requesting the API and getting the full list of pokemons.
-    public func fetchAllPokemonList() {
-        guard let url = URL(string: "http://pokeapi.co/api/v2/pokemon/?limit=949") else{
+    public func getCount() {
+        guard let url = URL(string: "http://pokeapi.co/api/v2/pokemon/?limit=0") else{
             print("error : cannot create URL")
             return
         }
@@ -35,7 +35,7 @@ class AllPokemonViewModel: NSObject {
             // while the task is still running.
             if let error = error as NSError? {
                 if error.code == NSURLErrorCancelled {
-                    print("TASK CANCELED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    print("TASK CANCELED !")
                 }
                 return
             }
@@ -46,18 +46,55 @@ class AllPokemonViewModel: NSObject {
                 return
             }
             do{
-                guard let pokemon = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else{
-                    print("error trying to convert data to JSON")
-                    self.delegate?.networkIssue()
-                    return
+                let pokemonDetail = try JSONDecoder().decode(Pokemon.List.self, from: responseData)
+                var pokemonCount = pokemonDetail.count
+                self.delegate?.fetchList(count: pokemonCount)
+            }catch{
+                print("error trying to convert data to JSON")
+                return
+            }
+            
+        }
+        self.task?.resume()
+    }
+    
+    // In charge of requesting the API and getting the full list of pokemons.
+    public func fetchAllPokemonList(count: Int) {
+        let c = String(count)
+        guard let url = URL(string: "http://pokeapi.co/api/v2/pokemon/?limit=" + c) else{
+            print("error : cannot create URL")
+            return
+        }
+        self.task = URLSession.shared.dataTask(with: url){ data, response, error in
+            self.delegate?.viewLoading()
+            
+            // Error managment
+            // Looks like it's useless but if I remove it, the ViewController display
+            // the "network issue" message when the user clicks on the refresh button
+            // while the task is still running.
+            if let error = error as NSError? {
+                if error.code == NSURLErrorCancelled {
+                    print("TASK CANCELED !")
                 }
-                guard let nsarray = pokemon["results"] as? NSArray else {
-                    print("error NSArray")
-                    return
+                return
+            }
+            
+            guard let responseData = data else {
+                print("error did not receive data from url")
+                self.delegate?.networkIssue()
+                return
+            }
+            do{
+                let pokemonDetail = try JSONDecoder().decode(Pokemon.List.self, from: responseData)
+                var pokemonList = [Pokemon]()
+                for i in 0...pokemonDetail.results.count - 1 {
+                    var name = pokemonDetail.results[i].name
+                    let url = pokemonDetail.results[i].url
+                    name = name.capitalized
+                    let pokemon = Pokemon(name: name, url: url)
+                    pokemonList.append(pokemon)
                 }
-                //To make the ViewController do the work
-                let pokList = Pokemon.parseJSON(nsarray: nsarray)
-                self.delegate?.updateList(pokemons: pokList)
+                self.delegate?.updateList(pokemons: pokemonList)
             }catch{
                 print("error trying to convert data to JSON")
                 return
