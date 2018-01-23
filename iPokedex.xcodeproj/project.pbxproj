@@ -22,8 +22,6 @@
 		C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */; };
 		C3C52D572016000F005A51FA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C52D552016000E005A51FA /* DetailViewController.swift */; };
 		C3C52D582016000F005A51FA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C52D562016000F005A51FA /* DetailViewController.xib */; };
-		C3C52D5A20162206005A51FA /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C52D5920162206005A51FA /* Stat.swift */; };
-		C3C52D5C201622BD005A51FA /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C52D5B201622BD005A51FA /* Stats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +63,6 @@
 		C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		C3C52D552016000E005A51FA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C3C52D562016000F005A51FA /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		C3C52D5920162206005A51FA /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
-		C3C52D5B201622BD005A51FA /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +146,6 @@
 			children = (
 				ACEDA14D2000F1A900B89F84 /* Pokemon.swift */,
 				AC321EDB200AE34500CC4607 /* AllPokemonViewModel.swift */,
-				C3C52D5920162206005A51FA /* Stat.swift */,
-				C3C52D5B201622BD005A51FA /* Stats.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -310,8 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACEDA14E2000F1A900B89F84 /* Pokemon.swift in Sources */,
-				C3C52D5C201622BD005A51FA /* Stats.swift in Sources */,
-				C3C52D5A20162206005A51FA /* Stat.swift in Sources */,
 				824BF3C61FEFE9F10018463E /* AppDelegate.swift in Sources */,
 				ACEDA16120017FF600B89F84 /* AllPokemonViewController.swift in Sources */,
 				ACD600CB2008BCCE005CD4DD /* AboutViewController.swift in Sources */,

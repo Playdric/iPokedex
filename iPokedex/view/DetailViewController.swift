@@ -8,6 +8,25 @@
 
 import UIKit
 
+
+struct Detail : Decodable {
+    let name: String
+    let weight: Int
+    let stats: [Stats]
+}
+
+struct Stats : Decodable {
+    let stat: Stat?
+    let effort: Int
+    let base_stat: Int
+    
+}
+
+struct Stat : Decodable {
+    let url: String
+    let name: String
+}
+
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,6 +46,34 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         nameLabel.text = currentPokemon?.getName()
+        
+        
+        let jsonUrlString = self.currentPokemon?.getUrl()
+        
+        
+        let url = URL(string: jsonUrlString!)
+        
+        URLSession.shared.dataTask(with: url!) { (data, response, err) in
+            guard err == nil else {
+                print("error calling the url. Please try with an existing url.")
+                print(err!)
+                return
+            }
+            
+            guard let data = data else {
+                print("Error in retrieving the data")
+                return
+            }
+            
+            do{
+                let pokemonDetail = try JSONDecoder().decode(Detail.self, from: data)
+                print(pokemonDetail)
+            }catch let jsonErr {
+                print("Error in serializing the json :", jsonErr)
+            }
+            
+            
+        }.resume()
     }
 
     func setCurrentPokemon(pokemon: Pokemon) {
