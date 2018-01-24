@@ -88,7 +88,7 @@ extension AllPokemonViewController: UITableViewDelegate {
         viewController.setCurrentPokemon(pokemon: pokemon)
         print(pokemon.getName())
         navigationController?.pushViewController(viewController, animated: true)
-        
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
