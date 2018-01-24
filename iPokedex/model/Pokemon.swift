@@ -11,6 +11,7 @@ import Foundation
 public class Pokemon: NSObject {
     private var name: String
     private var url: String
+    public var infoPokemon: Detail?
     
     init(name: String,url: String) {
         self.name = name
@@ -26,8 +27,9 @@ public class Pokemon: NSObject {
     }
     
     
+    
     //structs added to match the needed proprieties from the json
-    struct Detail : Decodable {
+    public struct Detail : Decodable {
         let name: String
         let weight: Int
         let height: Int

@@ -94,6 +94,8 @@ extension AllPokemonViewController: UITableViewDelegate {
 
 // Implementing protocol methods
 extension AllPokemonViewController: DetailsDelegate {
+    
+    
     // updating the local variable of pôkemons list
     func updateList(pokemons: [Pokemon]) {
         self.pokemons = pokemons
