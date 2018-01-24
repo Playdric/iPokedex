@@ -33,7 +33,6 @@ class DetailViewController: UIViewController {
         
         let jsonUrlString = self.currentPokemon?.getUrl()
         
-        
         let url = URL(string: jsonUrlString!)
         
         self.activityIndicator.startAnimating()
@@ -62,7 +61,9 @@ class DetailViewController: UIViewController {
                     self.attackLabel.text = "Attack : \(pokemonDetail.stats[4].base_stat)"
                     self.defenseLabel.text = "Defense : \(pokemonDetail.stats[3].base_stat)"
                     self.baseSpeedLabel.text = "Speed : \(pokemonDetail.stats[0].base_stat)"
-
+                    
+                    self.downloadImage(urlString: pokemonDetail.sprites.front_default!, imageView: self.pokemonPicture)
+                    
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     
@@ -73,14 +74,40 @@ class DetailViewController: UIViewController {
                 return
             }
             
-
         }
-            
+        
         task?.resume()
         
+        let imgBattleGesture = UITapGestureRecognizer(target: self, action: #selector(imgBattleTapped(tapGesture:)))
+        imageBattle.isUserInteractionEnabled = true
+        imageBattle.addGestureRecognizer(imgBattleGesture)
 
     }
+    
+    @objc func imgBattleTapped(tapGesture: UITapGestureRecognizer){
+        print("Tapped")
+        //navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+    }
 
+    func downloadImage(urlString: String, imageView: UIImageView){
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        
+        let url:URL = URL(string: urlString)!
+        let session = URLSession.shared
+        let task = session.dataTask(with: url) { (data, response, err) in
+            if data != nil{
+                let image = UIImage(data: data!)
+                if image != nil{
+                    DispatchQueue.main.async {
+                        imageView.image = image
+                    }
+                }
+            }else{
+                print("erreur dans la récupération de l'image")
+            }
+        }
+        task.resume()
+    }
 
     func setCurrentPokemon(pokemon: Pokemon) {
         self.currentPokemon = pokemon
