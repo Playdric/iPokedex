@@ -97,6 +97,7 @@ class AllPokemonViewModel: NSObject {
                 self.delegate?.updateList(pokemons: pokemonList)
             }catch{
                 print("error trying to convert data to JSON")
+                self.delegate?.networkIssue()
                 return
             }
             
