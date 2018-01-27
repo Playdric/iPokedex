@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 public class Pokemon: NSObject {
     private var name: String
@@ -26,7 +28,26 @@ public class Pokemon: NSObject {
         return self.url
     }
     
-    
+    func downloadImage(urlString: String, imageView: UIImageView){
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        
+        let url:URL = URL(string: urlString)!
+        let session = URLSession.shared
+        let task = session.dataTask(with: url) { (data, response, err) in
+            if data != nil{
+                let image = UIImage(data: data!)
+                if image != nil{
+                    DispatchQueue.main.async {
+                        imageView.image = image
+                    }
+                }
+            }else{
+                print("erreur dans la récupération de l'image")
+            }
+        }
+        task.resume()
+    }
+
     
     //structs added to match the needed proprieties from the json
     public struct Detail : Decodable {
