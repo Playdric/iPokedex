@@ -22,6 +22,8 @@
 		C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */; };
 		C3C52D572016000F005A51FA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C52D552016000E005A51FA /* DetailViewController.swift */; };
 		C3C52D582016000F005A51FA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C52D562016000F005A51FA /* DetailViewController.xib */; };
+		C3C52D612018E4F3005A51FA /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C52D5F2018E4F3005A51FA /* BattleViewController.swift */; };
+		C3C52D622018E4F3005A51FA /* BattleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C52D602018E4F3005A51FA /* BattleViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		C35E35611FFBD8AF006EF5E5 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		C3C52D552016000E005A51FA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C3C52D562016000F005A51FA /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		C3C52D5F2018E4F3005A51FA /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		C3C52D602018E4F3005A51FA /* BattleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 				ACEDA16020017FF600B89F84 /* AllPokemonViewController.xib */,
 				ACD600C92008BCCE005CD4DD /* AboutViewController.swift */,
 				ACD600CA2008BCCE005CD4DD /* AboutViewController.xib */,
+				C3C52D5F2018E4F3005A51FA /* BattleViewController.swift */,
+				C3C52D602018E4F3005A51FA /* BattleViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 				C3C52D582016000F005A51FA /* DetailViewController.xib in Resources */,
 				C35E35621FFBD8AF006EF5E5 /* MainViewController.xib in Resources */,
 				ACEDA16220017FF600B89F84 /* AllPokemonViewController.xib in Resources */,
+				C3C52D622018E4F3005A51FA /* BattleViewController.xib in Resources */,
 				824BF3CD1FEFE9F10018463E /* Assets.xcassets in Resources */,
 				ACD600CC2008BCCE005CD4DD /* AboutViewController.xib in Resources */,
 			);
@@ -303,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C52D612018E4F3005A51FA /* BattleViewController.swift in Sources */,
 				ACEDA14E2000F1A900B89F84 /* Pokemon.swift in Sources */,
 				824BF3C61FEFE9F10018463E /* AppDelegate.swift in Sources */,
 				ACEDA16120017FF600B89F84 /* AllPokemonViewController.swift in Sources */,
