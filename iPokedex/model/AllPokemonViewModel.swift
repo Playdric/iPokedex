@@ -9,7 +9,7 @@
 import UIKit
 
 // Protocol to communicate with the ViewController
-protocol DetailsDelegate: class {
+protocol AllPokemonsDelegate: class {
     func updateList(pokemons: [Pokemon])
     func networkIssue()
     func viewLoading()
@@ -18,7 +18,7 @@ protocol DetailsDelegate: class {
 
 class AllPokemonViewModel: NSObject {
     
-    weak var delegate: DetailsDelegate?
+    weak var delegate: AllPokemonsDelegate?
     var task: URLSessionDataTask?
     
     public func getCount() {
