@@ -93,7 +93,7 @@ extension AllPokemonViewController: UITableViewDelegate {
 }
 
 // Implementing protocol methods
-extension AllPokemonViewController: DetailsDelegate {
+extension AllPokemonViewController: AllPokemonsDelegate {
     
     
     // updating the local variable of pôkemons list
