@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 public class Pokemon: NSObject {
     private var name: String
@@ -27,6 +29,7 @@ public class Pokemon: NSObject {
     }
     
     
+
     
     //structs added to match the needed proprieties from the json
     public struct Detail : Decodable {

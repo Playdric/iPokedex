@@ -51,7 +51,6 @@
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                             <connections>
-                                <action selector="btnAllPokemonList:" destination="-1" eventType="touchUpInside" id="2yk-DZ-RNl"/>
                                 <action selector="btnSearch:" destination="-1" eventType="touchUpInside" id="w4w-nz-i8K"/>
                             </connections>
                         </button>
