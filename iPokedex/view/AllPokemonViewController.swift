@@ -149,7 +149,6 @@ extension AllPokemonViewController: UISearchBarDelegate {
         } else {
             self.filteredPokemons = self.pokemons.filter { $0.getName().lowercased().contains(self.searchBar.text!.lowercased()) }
             for pok in filteredPokemons {
-                print("\(pok.getName())")
             }
             
         }
