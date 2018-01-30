@@ -99,7 +99,12 @@ extension AllPokemonViewController: UITableViewDataSource {
 
 extension AllPokemonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pokemon = pokemons[indexPath.row]
+        var pokemon: Pokemon
+        if(self.searchActive){
+            pokemon = filteredPokemons[indexPath.row]
+        } else {
+            pokemon = pokemons[indexPath.row]
+        }
         let viewController = DetailViewController()
         viewController.setCurrentPokemon(pokemon: pokemon)
         print(pokemon.getName())
