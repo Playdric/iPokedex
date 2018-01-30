@@ -15,7 +15,9 @@ class AllPokemonViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     public var pokemons: [Pokemon] = []
-    private let dataModel = AllPokemonViewModel()
+    private lazy var dataModel: AllPokemonViewModel = {
+        return AllPokemonViewModel()
+    }()
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
