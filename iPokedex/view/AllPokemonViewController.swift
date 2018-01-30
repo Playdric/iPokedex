@@ -113,6 +113,9 @@ extension AllPokemonViewController: UITableViewDelegate {
         navigationController?.pushViewController(viewController, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
 }
 
 // Implementing protocol methods
