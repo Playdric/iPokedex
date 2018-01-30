@@ -14,12 +14,12 @@ class AllPokemonViewController: UIViewController {
     @IBOutlet weak var networkIssueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
-    public var pokemons: [Pokemon] = []
-    public var filteredPokemons = [Pokemon]()
-    private let dataModel = AllPokemonViewModel()
-    public var refreshControl: UIRefreshControl!
     @IBOutlet weak var searchBar: UISearchBar!
-    var searchActive : Bool = false
+    private var searchActive : Bool = false
+    private var refreshControl: UIRefreshControl!
+    private var pokemons: [Pokemon] = []
+    private var filteredPokemons = [Pokemon]()
+    private let dataModel = AllPokemonViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,9 @@ class AllPokemonViewController: UIViewController {
         self.networkIssueLabel.isHidden = true
         self.tableView.isHidden = false
         self.tableView.reloadData()
+        // Re init the search bar and hide keyboard
+        self.searchBar.text = ""
+        self.view.endEditing(true)
     }
     
     // Managing UI elements, the view should be in network issue mode
@@ -66,6 +69,8 @@ class AllPokemonViewController: UIViewController {
         self.viewIsLoading()
         // Re launch the task
         self.dataModel.getCount()
+        // Hide keyboard
+        self.view.endEditing(true)
     }
     
 }
