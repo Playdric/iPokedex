@@ -15,8 +15,11 @@ class AllPokemonViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     public var pokemons: [Pokemon] = []
+    public var filteredPokemons = [Pokemon]()
     private let dataModel = AllPokemonViewModel()
-    var refreshControl: UIRefreshControl!
+    public var refreshControl: UIRefreshControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchActive : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class AllPokemonViewController: UIViewController {
         viewIsLoading()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.searchBar.delegate = self
         self.dataModel.delegate = self
         self.dataModel.getCount()
     }
@@ -63,18 +67,30 @@ class AllPokemonViewController: UIViewController {
         // Re launch the task
         self.dataModel.getCount()
     }
+    
 }
 
 
 extension AllPokemonViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.pokemons.count
+        if filteredPokemons.count == 0 {
+            return self.pokemons.count
+        } else {
+            return self.filteredPokemons.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
-        let c = self.pokemons[idx].getName()
+        print("cellForRowAt, searchActive : \(self.searchActive)")
+        var idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
+        var c = self.pokemons[idx].getName()
         let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "nameCell")
+        if(self.searchActive){
+            idx = self.filteredPokemons.index(self.filteredPokemons.startIndex, offsetBy: indexPath.row)
+            c = self.filteredPokemons[idx].getName()
+            print("//\(c)\\")
+        }
         cell.textLabel?.text = c
         return cell
     }
@@ -123,5 +139,29 @@ extension AllPokemonViewController: AllPokemonsDelegate {
         DispatchQueue.main.async {
             self.dataModel.fetchAllPokemonList(count: count)
         }
+    }
+}
+
+extension AllPokemonViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if self.searchBar.text! == "" {
+            self.filteredPokemons = self.pokemons
+        } else {
+            self.filteredPokemons = self.pokemons.filter { $0.getName().lowercased().contains(self.searchBar.text!.lowercased()) }
+            for pok in filteredPokemons {
+                print("\(pok.getName())")
+            }
+            
+        }
+    
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchActive = false;
     }
 }
