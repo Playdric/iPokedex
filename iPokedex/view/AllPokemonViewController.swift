@@ -82,14 +82,16 @@ extension AllPokemonViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cellForRowAt, searchActive : \(self.searchActive)")
         var idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
         var c = self.pokemons[idx].getName()
         let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "nameCell")
         if(self.searchActive){
             idx = self.filteredPokemons.index(self.filteredPokemons.startIndex, offsetBy: indexPath.row)
-            c = self.filteredPokemons[idx].getName()
-            print("//\(c)\\")
+            if self.filteredPokemons.count == 0 {
+                c = ""
+            } else {
+                c = self.filteredPokemons[idx].getName()
+            }
         }
         cell.textLabel?.text = c
         return cell
@@ -153,9 +155,6 @@ extension AllPokemonViewController: UISearchBarDelegate {
             self.filteredPokemons = self.pokemons
         } else {
             self.filteredPokemons = self.pokemons.filter { $0.getName().lowercased().contains(self.searchBar.text!.lowercased()) }
-            for pok in filteredPokemons {
-            }
-            
         }
     
         self.tableView.reloadData()
