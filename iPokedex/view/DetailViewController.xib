@@ -129,7 +129,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-Em-LtK">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Egr-Zk-aoi">
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="Egr-Zk-aoi">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
@@ -159,5 +159,6 @@
     </objects>
     <resources>
         <image name="Battle" width="96" height="96"/>
+        <image name="Pokeball" width="30" height="30"/>
     </resources>
 </document>

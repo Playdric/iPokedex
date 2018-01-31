@@ -36,7 +36,10 @@ class DetailViewModel: NSObject {
             
             do{
                 let pokemonDetail = try JSONDecoder().decode(Pokemon.Detail.self, from: data)
-                self.downloadImage(urlString: pokemonDetail.sprites.front_default!)
+                let urlSprite = pokemonDetail.sprites.front_default
+                if urlSprite != nil {
+                    self.downloadImage(urlString: pokemonDetail.sprites.front_default!)
+                }
                 self.delegate?.updateUI(pokemonDetail: pokemonDetail)
                 
             }catch let jsonErr {
