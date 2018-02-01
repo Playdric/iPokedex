@@ -24,10 +24,13 @@ class BattleViewController: UIViewController {
     
     @IBOutlet weak var imageBattle: UIImageView!
     
+    public var blueTeamImage: UIImage?
+    public var redTeamImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.imageBlueTeamPokemon.image = blueTeamImage
     }
 
 
