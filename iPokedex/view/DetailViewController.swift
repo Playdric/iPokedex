@@ -51,7 +51,7 @@ class DetailViewController: UIViewController{
     
     @objc func imgBattleTapped(tapGesture: UITapGestureRecognizer){
         print("Tapped")
-        //navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+        navigationController?.pushViewController(BattleViewController(), animated: true)
     }
 
     
