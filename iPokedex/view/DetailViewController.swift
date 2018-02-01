@@ -52,7 +52,9 @@ class DetailViewController: UIViewController{
     
     @objc func imgBattleTapped(tapGesture: UITapGestureRecognizer){
         print("Tapped")
-        navigationController?.pushViewController(BattleViewController.newInstance(), animated: true)
+        var viewController = BattleViewController()
+        viewController.blueTeamImage = self.pokemonPicture.image
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     

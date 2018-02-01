@@ -34,6 +34,9 @@ class BattleViewController: UIViewController {
         return battleController
     }
     
+    public var blueTeamImage: UIImage?
+    public var redTeamImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +59,6 @@ class BattleViewController: UIViewController {
         imageBlueTeamPokemon.addGestureRecognizer(tapBlueGesture)
         
         updateUI()
-        
     }
     
     @objc func imgTapped(imgTapGesture: UITapGestureRecognizer){
