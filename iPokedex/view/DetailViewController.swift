@@ -28,9 +28,7 @@ class DetailViewController: UIViewController{
     public var currentPokemon: Pokemon?
     private var task: URLSessionTask?
     
-    private lazy var dataModel:  DetailViewModel = {
-        return DetailViewModel()
-    }()
+    private let dataModel = DetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

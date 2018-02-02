@@ -14,11 +14,12 @@ class AllPokemonViewController: UIViewController {
     @IBOutlet weak var networkIssueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
-    public var pokemons: [Pokemon] = []
-    private lazy var dataModel: AllPokemonViewModel = {
-        return AllPokemonViewModel()
-    }()
-    var refreshControl: UIRefreshControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    private var searchActive : Bool = false
+    private var refreshControl: UIRefreshControl!
+    private var pokemons: [Pokemon] = []
+    private var filteredPokemons = [Pokemon]()
+    private let dataModel = AllPokemonViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class AllPokemonViewController: UIViewController {
         viewIsLoading()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.searchBar.delegate = self
         self.dataModel.delegate = self
         self.dataModel.getCount()
     }
@@ -47,6 +49,9 @@ class AllPokemonViewController: UIViewController {
         self.networkIssueLabel.isHidden = true
         self.tableView.isHidden = false
         self.tableView.reloadData()
+        // Re init the search bar and hide keyboard
+        self.searchBar.text = ""
+        self.view.endEditing(true)
     }
     
     // Managing UI elements, the view should be in network issue mode
@@ -64,19 +69,35 @@ class AllPokemonViewController: UIViewController {
         self.viewIsLoading()
         // Re launch the task
         self.dataModel.getCount()
+        // Hide keyboard
+        self.view.endEditing(true)
     }
+    
 }
 
 
 extension AllPokemonViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.pokemons.count
+        if filteredPokemons.count == 0 {
+            return self.pokemons.count
+        } else {
+            return self.filteredPokemons.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
-        let c = self.pokemons[idx].getName()
+        var idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
+        var c = self.pokemons[idx].getName()
         let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "nameCell")
+        if(self.searchActive){
+            idx = self.filteredPokemons.index(self.filteredPokemons.startIndex, offsetBy: indexPath.row)
+            if self.filteredPokemons.count == 0 {
+                c = ""
+            } else {
+                c = self.filteredPokemons[idx].getName()
+            }
+        }
         cell.textLabel?.text = c
         return cell
     }
@@ -85,12 +106,20 @@ extension AllPokemonViewController: UITableViewDataSource {
 
 extension AllPokemonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pokemon = pokemons[indexPath.row]
+        var pokemon: Pokemon
+        if(self.searchActive){
+            pokemon = filteredPokemons[indexPath.row]
+        } else {
+            pokemon = pokemons[indexPath.row]
+        }
         let viewController = DetailViewController()
         viewController.setCurrentPokemon(pokemon: pokemon)
         print(pokemon.getName())
         navigationController?.pushViewController(viewController, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
     }
 }
 
@@ -125,5 +154,25 @@ extension AllPokemonViewController: AllPokemonsDelegate {
         DispatchQueue.main.async {
             self.dataModel.fetchAllPokemonList(count: count)
         }
+    }
+}
+
+extension AllPokemonViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if self.searchBar.text! == "" {
+            self.filteredPokemons = self.pokemons
+        } else {
+            self.filteredPokemons = self.pokemons.filter { $0.getName().lowercased().contains(self.searchBar.text!.lowercased()) }
+        }
+    
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchActive = false;
     }
 }
