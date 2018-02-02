@@ -32,6 +32,7 @@ class AllPokemonViewController: UIViewController {
         self.searchBar.delegate = self
         self.dataModel.delegate = self
         self.dataModel.getCount()
+        self.tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "pokemonCell")
     }
     
     // Managing UI elements, the view should be in loading mode
@@ -88,20 +89,27 @@ extension AllPokemonViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var idx = self.pokemons.index(self.pokemons.startIndex, offsetBy: indexPath.row)
-        var c = self.pokemons[idx].getName()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "nameCell")
-        if(self.searchActive){
-            idx = self.filteredPokemons.index(self.filteredPokemons.startIndex, offsetBy: indexPath.row)
-            if self.filteredPokemons.count == 0 {
-                c = ""
+        var pokemonName: String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath)
+        if let pokemonCell = cell as? PokemonTableViewCell {
+            pokemonCell.pokemonImgView.image = UIImage(named: "sad-pika.png")
+            if(self.searchActive){
+                idx = self.filteredPokemons.index(self.filteredPokemons.startIndex, offsetBy: indexPath.row)
+                if self.filteredPokemons.count == 0 {
+                    pokemonName = ""
+                } else {
+                    pokemonName = self.filteredPokemons[idx].getName()
+                }
             } else {
-                c = self.filteredPokemons[idx].getName()
+                pokemonName = self.pokemons[idx].getName()
             }
+            pokemonCell.pokemonNameLabel.text = pokemonName
+            //TODO same pour l'image
+            pokemonName = pokemonName.lowercased()
+            pokemonCell.pokemonImgView.loadImageWithPokemonName(str: pokemonName)
         }
-        cell.textLabel?.text = c
         return cell
     }
-
 }
 
 extension AllPokemonViewController: UITableViewDelegate {
@@ -161,18 +169,12 @@ extension AllPokemonViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if self.searchBar.text! == "" {
             self.filteredPokemons = self.pokemons
+            self.searchActive = false
         } else {
             self.filteredPokemons = self.pokemons.filter { $0.getName().lowercased().contains(self.searchBar.text!.lowercased()) }
+            self.searchActive = true
         }
     
         self.tableView.reloadData()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        self.searchActive = false;
     }
 }
