@@ -34,8 +34,10 @@ class BattleViewController: UIViewController {
         return battleController
     }
     
-    public var blueTeamImage: UIImage?
-    public var redTeamImage: UIImage?
+    public static func newInstance() -> BattleViewController {
+        var battleController = BattleViewController()
+        return battleController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
