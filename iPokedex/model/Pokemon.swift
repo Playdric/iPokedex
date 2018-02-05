@@ -14,6 +14,7 @@ public class Pokemon: NSObject {
     private var name: String
     private var url: String
     public var infoPokemon: Detail?
+    var imagePokemon: UIImage?
     
     init(name: String,url: String) {
         self.name = name
