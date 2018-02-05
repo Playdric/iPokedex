@@ -25,6 +25,7 @@ class DetailViewController: UIViewController{
     
     @IBOutlet weak var pokemonPicture: UIImageView!
     
+    var appDelegate: AppDelegate?
     public var currentPokemon: Pokemon?
     private var task: URLSessionTask?
     
@@ -32,6 +33,8 @@ class DetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let jsonUrlString = self.currentPokemon?.getUrl()
         //TODO mettre la fonction ici
@@ -49,9 +52,7 @@ class DetailViewController: UIViewController{
     
     @objc func imgBattleTapped(tapGesture: UITapGestureRecognizer){
         print("Tapped")
-        var viewController = BattleViewController()
-        viewController.blueTeamImage = self.pokemonPicture.image
-        navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(BattleViewController.newInstance(), animated: true)
     }
 
     
@@ -66,6 +67,12 @@ extension DetailViewController: DetailDelegate {
         DispatchQueue.main.async {
             self.pokemonPicture.contentMode = UIViewContentMode.scaleAspectFit
             self.pokemonPicture.image = image
+            self.currentPokemon?.imagePokemon = image //Stock de l'image dans l'objet Pokemon pour eviter un autre appel plus tard
+            if self.appDelegate?.firstPokemon != nil{
+                self.appDelegate?.secondPokemon = self.currentPokemon
+            }else{
+                self.appDelegate?.firstPokemon = self.currentPokemon
+            }
         }
     }
     
