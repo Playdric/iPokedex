@@ -18,6 +18,7 @@ class DetailViewController: UIViewController{
     @IBOutlet weak var baseSpeedLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
 
     @IBOutlet weak var imageBattle: UIImageView!
     
@@ -86,6 +87,7 @@ extension DetailViewController: DetailDelegate {
             self.attackLabel.text = "Attack : \(pokemonDetail.stats[4].base_stat)"
             self.defenseLabel.text = "Defense : \(pokemonDetail.stats[3].base_stat)"
             self.baseSpeedLabel.text = "Speed : \(pokemonDetail.stats[0].base_stat)"
+            self.typeLabel.text = "Type : \(pokemonDetail.types[0].type.name)"
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true

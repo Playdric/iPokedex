@@ -22,6 +22,7 @@
                 <outlet property="imageBattle" destination="uNm-DY-ai8" id="ksb-9w-cJA"/>
                 <outlet property="nameLabel" destination="kRB-zg-FIq" id="2IJ-s3-7D8"/>
                 <outlet property="pokemonPicture" destination="Egr-Zk-aoi" id="Hk8-VR-9sv"/>
+                <outlet property="typeLabel" destination="zDh-Jv-dna" id="wlL-ba-jiD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weightLabel" destination="APh-s9-7cV" id="dqL-fS-zP9"/>
             </connections>
@@ -91,6 +92,12 @@
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="tf3-Bk-7lr">
                             <rect key="frame" x="177" y="195" width="20" height="20"/>
                         </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDh-Jv-dna">
+                            <rect key="frame" x="8" y="268" width="375" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.90196078431372551" green="0.23921568627450979" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -103,6 +110,7 @@
                         <constraint firstItem="tf3-Bk-7lr" firstAttribute="centerY" secondItem="NBO-mr-Avj" secondAttribute="centerY" id="DOT-nj-hGw"/>
                         <constraint firstItem="uC1-SM-wuC" firstAttribute="leading" secondItem="NBO-mr-Avj" secondAttribute="leading" constant="8" id="G96-s8-cbU"/>
                         <constraint firstAttribute="trailing" secondItem="yw3-ys-A2b" secondAttribute="trailing" constant="8" id="GET-9Q-6eJ"/>
+                        <constraint firstItem="zDh-Jv-dna" firstAttribute="leading" secondItem="NBO-mr-Avj" secondAttribute="leading" constant="8" id="L6i-Qr-jKf"/>
                         <constraint firstItem="dIa-hU-1r2" firstAttribute="leading" secondItem="NBO-mr-Avj" secondAttribute="leading" constant="8" id="Ljl-Sd-9TW"/>
                         <constraint firstAttribute="trailing" secondItem="dIa-hU-1r2" secondAttribute="trailing" constant="8" id="Mgs-bx-okv"/>
                         <constraint firstItem="01p-UW-hBc" firstAttribute="top" secondItem="uC1-SM-wuC" secondAttribute="bottom" constant="8" id="SDu-sq-igl"/>
@@ -111,9 +119,11 @@
                         <constraint firstItem="kRB-zg-FIq" firstAttribute="centerX" secondItem="NBO-mr-Avj" secondAttribute="centerX" id="Y7H-ri-4zn"/>
                         <constraint firstAttribute="trailing" secondItem="2wv-Ev-cmr" secondAttribute="trailing" constant="8" id="aaF-9d-RLh"/>
                         <constraint firstAttribute="bottom" secondItem="uNm-DY-ai8" secondAttribute="bottom" constant="8" id="c8j-tc-pGd"/>
+                        <constraint firstItem="zDh-Jv-dna" firstAttribute="top" secondItem="2wv-Ev-cmr" secondAttribute="bottom" constant="8" id="cR5-3o-yXa"/>
                         <constraint firstItem="dIa-hU-1r2" firstAttribute="top" secondItem="01p-UW-hBc" secondAttribute="bottom" constant="8" id="ckL-ym-bTn"/>
                         <constraint firstItem="uC1-SM-wuC" firstAttribute="top" secondItem="kRB-zg-FIq" secondAttribute="bottom" constant="22" id="cks-GB-Kg1"/>
                         <constraint firstItem="APh-s9-7cV" firstAttribute="leading" secondItem="NBO-mr-Avj" secondAttribute="leading" constant="8" id="dGN-ih-Ff6"/>
+                        <constraint firstItem="zDh-Jv-dna" firstAttribute="width" secondItem="NBO-mr-Avj" secondAttribute="width" id="dKC-7d-UCA"/>
                         <constraint firstItem="2wv-Ev-cmr" firstAttribute="leading" secondItem="NBO-mr-Avj" secondAttribute="leading" constant="8" id="eUV-LH-9dS"/>
                         <constraint firstItem="bjF-Vo-4aM" firstAttribute="top" secondItem="dIa-hU-1r2" secondAttribute="bottom" constant="8" id="emU-Um-rpk"/>
                         <constraint firstAttribute="trailing" secondItem="APh-s9-7cV" secondAttribute="trailing" constant="8" id="fCD-vA-Gyt"/>

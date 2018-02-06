@@ -60,6 +60,7 @@ class BattleViewController: UIViewController {
     
     @objc func imgTapped(imgTapGesture: UITapGestureRecognizer){
         let tappedImage = imgTapGesture.view as! UIImageView
+        resetImage(tag: tappedImage.tag)
         navigationController?.pushViewController(AllPokemonViewController(), animated: true)
         
     }
@@ -69,6 +70,13 @@ class BattleViewController: UIViewController {
         self.pokemonBlueTeamName.text = self.blueTeamPokemon?.getName()
     }
     
+    func resetImage(tag: Int){
+        if tag == 1 {
+            appDelegate?.firstPokemon = nil
+        }else{
+            appDelegate?.secondPokemon = nil
+        }
+    }
 
 
 }
