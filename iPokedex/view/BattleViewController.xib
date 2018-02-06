@@ -37,7 +37,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2eC-7h-2rG">
+                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="2eC-7h-2rG">
                             <rect key="frame" x="0.0" y="248.5" width="187.5" height="150"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="150" id="Hir-HH-wIm"/>
@@ -78,7 +78,7 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="FjV-1h-I2J">
+                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="FjV-1h-I2J">
                             <rect key="frame" x="0.0" y="248" width="187.5" height="150"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="150" id="IJs-Gf-vZJ"/>
