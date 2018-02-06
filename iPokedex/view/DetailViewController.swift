@@ -93,6 +93,12 @@ extension DetailViewController: DetailDelegate {
             self.activityIndicator.isHidden = true
         }
     }
+}
+
+extension DetailViewController : EvolutionDelegate {
+    func updateListPokemon(pokemon: Pokemon.EvoChain) {
+        //
+    }
     
     
 }
