@@ -51,8 +51,14 @@ class DetailViewController: UIViewController{
     }
     
     @objc func imgBattleTapped(tapGesture: UITapGestureRecognizer){
-        print("Tapped")
         navigationController?.pushViewController(BattleViewController.newInstance(), animated: true)
+        
+        self.currentPokemon?.imagePokemon = self.pokemonPicture.image //Stock de l'image dans l'objet Pokemon pour eviter un autre appel plus tard
+        if self.appDelegate?.firstPokemon != nil{
+            self.appDelegate?.secondPokemon = self.currentPokemon
+        }else{
+            self.appDelegate?.firstPokemon = self.currentPokemon
+        }
     }
 
     
@@ -67,12 +73,6 @@ extension DetailViewController: DetailDelegate {
         DispatchQueue.main.async {
             self.pokemonPicture.contentMode = UIViewContentMode.scaleAspectFit
             self.pokemonPicture.image = image
-            self.currentPokemon?.imagePokemon = image //Stock de l'image dans l'objet Pokemon pour eviter un autre appel plus tard
-            if self.appDelegate?.firstPokemon != nil{
-                self.appDelegate?.secondPokemon = self.currentPokemon
-            }else{
-                self.appDelegate?.firstPokemon = self.currentPokemon
-            }
         }
     }
     

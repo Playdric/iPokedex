@@ -34,11 +34,6 @@ class BattleViewController: UIViewController {
         return battleController
     }
     
-    public static func newInstance() -> BattleViewController {
-        var battleController = BattleViewController()
-        return battleController
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
