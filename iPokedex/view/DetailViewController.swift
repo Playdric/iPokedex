@@ -18,6 +18,7 @@ class DetailViewController: UIViewController{
     @IBOutlet weak var baseSpeedLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
 
     @IBOutlet weak var imageBattle: UIImageView!
     
@@ -25,6 +26,7 @@ class DetailViewController: UIViewController{
     
     @IBOutlet weak var pokemonPicture: UIImageView!
     
+    var appDelegate: AppDelegate?
     public var currentPokemon: Pokemon?
     private var task: URLSessionTask?
     
@@ -32,6 +34,8 @@ class DetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let jsonUrlString = self.currentPokemon?.getUrl()
         //TODO mettre la fonction ici
@@ -48,8 +52,14 @@ class DetailViewController: UIViewController{
     }
     
     @objc func imgBattleTapped(tapGesture: UITapGestureRecognizer){
-        print("Tapped")
-        navigationController?.pushViewController(BattleViewController(), animated: true)
+        navigationController?.pushViewController(BattleViewController.newInstance(), animated: true)
+        
+        self.currentPokemon?.imagePokemon = self.pokemonPicture.image //Stock de l'image dans l'objet Pokemon pour eviter un autre appel plus tard
+        if self.appDelegate?.firstPokemon != nil{
+            self.appDelegate?.secondPokemon = self.currentPokemon
+        }else{
+            self.appDelegate?.firstPokemon = self.currentPokemon
+        }
     }
 
     
@@ -77,15 +87,30 @@ extension DetailViewController: DetailDelegate {
             self.attackLabel.text = "Attack : \(pokemonDetail.stats[4].base_stat)"
             self.defenseLabel.text = "Defense : \(pokemonDetail.stats[3].base_stat)"
             self.baseSpeedLabel.text = "Speed : \(pokemonDetail.stats[0].base_stat)"
+            self.typeLabel.text = "Type : \(self.getAllTypes(pokemon: pokemonDetail))" //plusieurs types peuvent être sur un pokemon
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
         }
     }
+    
+    func getAllTypes(pokemon: Pokemon.Detail) -> String {
+        var res: String = ""
+        var cpt: Int = 0
+        for val in pokemon.types {
+            cpt += 1
+            res += "\((val.type?.name) ?? "No types") "
+            if cpt < pokemon.types.count {
+                res += "| "
+            }
+        }
+        
+        return res
+    }
 }
 
 extension DetailViewController : EvolutionDelegate {
-    func updateListPokemon(pokemon: Pokemon.EvoChain) {
+    func updateListPokemon(pokemon: Pokemon.Evolution) {
         //
     }
     

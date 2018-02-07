@@ -14,6 +14,7 @@ public class Pokemon: NSObject {
     private var name: String
     private var url: String
     public var infoPokemon: Detail?
+    var imagePokemon: UIImage?
     
     init(name: String,url: String) {
         self.name = name
@@ -56,33 +57,45 @@ public class Pokemon: NSObject {
     }
     
     struct Types : Decodable {
-        let slot: Int
-        let type: UrlName
+        let slot: Int?
+        let type: UrlName?
     }
     
     struct UrlName : Decodable {
-        let url: String
-        let name: String
+        let url: String?
+        let name: String?
     }
 
+    public struct Evolution : Decodable{
+        let chain: Chain
+    }
+    
+    struct Chain : Decodable {
+        let evolves_to: [EvolvesTo]?
+        let evolution_details: [EvolutionDetails]?
+        let species: UrlName?
+    }
+    
+    struct EvolvesTo : Decodable {
+        let species: UrlName?
+        let evolution_details:[EvolutionDetails]?
+        let evolves_to: [EvolvesTo]?
+    }
+    
+    struct EvolutionDetails : Decodable {
+        let min_level: String?
+    }
+    
     public struct SpeciesDetail : Decodable {
-        let varieties: [Varietie]
+        let capture_rate: Int?
+        let varieties: [Varieties]?
     }
     
-    struct Varietie : Decodable {
-        let is_default: Bool
-        let pokemon: UrlName
+    struct Varieties : Decodable {
+        let is_default: Bool?
+        let pokemon: UrlName?
     }
     
-    //Struct for the evo
-    public struct EvoChain : Decodable{
-        let id: Int
-        let chain: EvoDetails
-    }
-    
-    struct EvoDetails : Decodable {
-        
-    }
     
     
     // Struct for the list of pokemons

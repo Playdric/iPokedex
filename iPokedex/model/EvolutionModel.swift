@@ -9,7 +9,7 @@
 import Foundation
 
 protocol EvolutionDelegate {
-    func updateListPokemon(pokemon: Pokemon.EvoChain)
+    func updateListPokemon(pokemon: Pokemon.Evolution)
 }
 
 class EvolutionModel : NSObject{
@@ -32,7 +32,7 @@ class EvolutionModel : NSObject{
             }
             
             do{
-                let pokemonEvolutionChain = try JSONDecoder().decode(Pokemon.EvoChain.self, from: data)
+                let pokemonEvolutionChain = try JSONDecoder().decode(Pokemon.Evolution.self, from: data)
                 
             }catch let jsonErr {
                 print("Error in serializing the json :", jsonErr)
@@ -43,4 +43,4 @@ class EvolutionModel : NSObject{
         
         task.resume()
     }
-}
+ }
