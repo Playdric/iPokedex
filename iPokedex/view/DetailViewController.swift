@@ -19,7 +19,10 @@ class DetailViewController: UIViewController{
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-
+    
+    @IBOutlet weak var imagePrevious: UIImageView!
+    @IBOutlet weak var imageNext: UIImageView!
+    
     @IBOutlet weak var imageBattle: UIImageView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -30,25 +33,25 @@ class DetailViewController: UIViewController{
     public var currentPokemon: Pokemon?
     private var task: URLSessionTask?
     
+    private var baseString: String = "https://pokeapi.co/api/v2/pokemon/"
+    
     private let dataModel = DetailViewModel()
+    
+    var idPokemon: Int?
+    
+    var jsonUrlString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        let jsonUrlString = self.currentPokemon?.getUrl()
-        //TODO mettre la fonction ici
-        self.dataModel.delegate = self
-        self.dataModel.downloadPokemonInfos(jsonUrlString: jsonUrlString!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.activityIndicator.startAnimating()
-        self.activityIndicator.isHidden = false
-        
-        let imgBattleGesture = UITapGestureRecognizer(target: self, action: #selector(imgBattleTapped(tapGesture:)))
-        imageBattle.isUserInteractionEnabled = true
-        imageBattle.addGestureRecognizer(imgBattleGesture)
-
+        loadData(givenUrl: (self.currentPokemon?.getUrl())!)
     }
     
     @objc func imgBattleTapped(tapGesture: UITapGestureRecognizer){
@@ -61,7 +64,57 @@ class DetailViewController: UIViewController{
             self.appDelegate?.firstPokemon = self.currentPokemon
         }
     }
+    
+    private func loadData(givenUrl: String){
+        //TODO mettre la fonction ici
+        self.dataModel.delegate = self
+        
+        self.activityIndicator.startAnimating()
+        self.activityIndicator.isHidden = false
+        
+        let imgBattleGesture = UITapGestureRecognizer(target: self, action: #selector(imgBattleTapped(tapGesture:)))
+        imageBattle.isUserInteractionEnabled = true
+        imageBattle.addGestureRecognizer(imgBattleGesture)
+        
+        
+        jsonUrlString = givenUrl
+        
+        self.dataModel.downloadPokemonInfos(jsonUrlString: jsonUrlString!)
+        
+        let imgPreviousGesture = UITapGestureRecognizer(target: self, action: #selector(getPreviousPokemon))
+        imagePrevious.isUserInteractionEnabled = false
+        imagePrevious.addGestureRecognizer(imgPreviousGesture)
+        imagePrevious.isHidden = true
+        
+        let imgNextGesture = UITapGestureRecognizer(target: self, action: #selector(getNextPokemon))
+        imageNext.isUserInteractionEnabled = false
+        imageNext.addGestureRecognizer(imgNextGesture)
+        imageNext.isHidden = true
+    }
 
+    
+    @objc func getNextPokemon(){
+        guard var idIncr = self.idPokemon else {
+            return
+        }
+        idIncr += 1
+        let str = "\(baseString)\(idIncr)/"
+        loadData(givenUrl: str)
+    }
+    
+    @objc func getPreviousPokemon(){
+        guard var idDecr = self.idPokemon else {
+            return
+        }
+        idDecr -= 1
+        if idDecr <= 0 {
+            return
+            //popup erreur
+        }
+        let str = "\(baseString)\(idDecr)/"
+        loadData(givenUrl: str)
+    }
+    
     
     func setCurrentPokemon(pokemon: Pokemon) {
         self.currentPokemon = pokemon
@@ -88,6 +141,12 @@ extension DetailViewController: DetailDelegate {
             self.defenseLabel.text = "Defense : \(pokemonDetail.stats[3].base_stat)"
             self.baseSpeedLabel.text = "Speed : \(pokemonDetail.stats[0].base_stat)"
             self.typeLabel.text = "Type : \(self.getAllTypes(pokemon: pokemonDetail))" //plusieurs types peuvent être sur un pokemon
+            self.idPokemon = pokemonDetail.id
+            
+            self.imagePrevious.isHidden = false
+            self.imageNext.isHidden = false
+            self.imagePrevious.isUserInteractionEnabled = true
+            self.imageNext.isUserInteractionEnabled = true
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
@@ -108,12 +167,3 @@ extension DetailViewController: DetailDelegate {
         return res
     }
 }
-
-extension DetailViewController : EvolutionDelegate {
-    func updateListPokemon(pokemon: Pokemon.Evolution) {
-        //
-    }
-    
-    
-}
-
