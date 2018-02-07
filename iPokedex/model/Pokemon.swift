@@ -34,6 +34,7 @@ public class Pokemon: NSObject {
     
     //structs added to match the needed proprieties from the json
     public struct Detail : Decodable {
+        let id: Int
         let name: String
         let weight: Int
         let height: Int
