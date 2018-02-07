@@ -6,10 +6,6 @@ Pour switch sur la nouvelle branche :
 ```
 git checkout <leNomDeLaBranche>
 ```
-Pour delete une branche (s'assurer qu'elle est inutile) : 
-```
-git branch -D <leNomDeLaBranche>
-```
 
 
 La branche sera crée sur le repo (le site github) que quand vous aurez fait un push.
@@ -40,3 +36,9 @@ Pour changer de branche localement (genre pour voir le taff qu'a fait un autre s
 git fetch origin <NomDeLaBranche>
 git checkout <NomDeLaBranche>
 ```
+
+Pour delete une branche (s'assurer qu'elle est inutile) : 
+```
+git branch -D <leNomDeLaBranche>
+```
+
