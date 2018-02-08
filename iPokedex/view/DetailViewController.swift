@@ -98,6 +98,11 @@ class DetailViewController: UIViewController{
             return
         }
         idIncr += 1
+        if idIncr >= (appDelegate?.countPokemon)!{
+            return
+            //popup erreur
+        }
+        pokemonPicture.image = nil
         let str = "\(baseString)\(idIncr)/"
         loadData(givenUrl: str)
     }
@@ -111,6 +116,7 @@ class DetailViewController: UIViewController{
             return
             //popup erreur
         }
+        pokemonPicture.image = nil
         let str = "\(baseString)\(idDecr)/"
         loadData(givenUrl: str)
     }

@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isTeamBlue: Bool = true //if false then TeamRed
     var firstPokemon: Pokemon?
     var secondPokemon: Pokemon?
+    var countPokemon: Int?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
