@@ -89,6 +89,8 @@ extension DetailViewController: DetailDelegate {
             self.baseSpeedLabel.text = "Speed : \(pokemonDetail.stats[0].base_stat)"
             self.typeLabel.text = "Type : \(pokemonDetail.types[0].type.name)"
             
+            self.currentPokemon?.infoPokemon = pokemonDetail
+            
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
         }
