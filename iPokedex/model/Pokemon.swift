@@ -98,6 +98,7 @@ public class Pokemon: NSObject {
     }
     
     
+    
     // Struct for the list of pokemons
     struct List: Decodable {
         let count: Int
