@@ -98,6 +98,11 @@ class DetailViewController: UIViewController{
             return
         }
         idIncr += 1
+        if idIncr >= (appDelegate?.countPokemon)!{
+            return
+            //popup erreur
+        }
+        pokemonPicture.image = nil
         let str = "\(baseString)\(idIncr)/"
         loadData(givenUrl: str)
     }
@@ -111,6 +116,7 @@ class DetailViewController: UIViewController{
             return
             //popup erreur
         }
+        pokemonPicture.image = nil
         let str = "\(baseString)\(idDecr)/"
         loadData(givenUrl: str)
     }
@@ -152,17 +158,18 @@ extension DetailViewController: DetailDelegate {
             self.activityIndicator.isHidden = true
         }
     }
-}
-
-func getAllTypes(pokemon: Pokemon.Detail) -> String {
+    
+    func getAllTypes(pokemon: Pokemon.Detail) -> String {
         var res: String = ""
         var cpt: Int = 0
         for val in pokemon.types {
             cpt += 1
-            res += "\((val.type.name) ) "
+            res += "\((val.type?.name) ?? "No types") "
             if cpt < pokemon.types.count {
-                    res += "| "
-                }
+                res += "| "
             }
+        }
+        
         return res
+    }
 }
