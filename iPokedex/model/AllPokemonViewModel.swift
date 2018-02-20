@@ -48,6 +48,10 @@ class AllPokemonViewModel: NSObject {
             do{
                 let pokemonDetail = try JSONDecoder().decode(Pokemon.List.self, from: responseData)
                 let pokemonCount = pokemonDetail.count
+                DispatchQueue.main.async {
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    appDelegate?.countPokemon = pokemonCount
+                }
                 self.delegate?.fetchList(count: pokemonCount)
             }catch{
                 print("error trying to convert data to JSON")

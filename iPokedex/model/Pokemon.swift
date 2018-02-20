@@ -34,25 +34,23 @@ public class Pokemon: NSObject {
     
     //structs added to match the needed proprieties from the json
     public struct Detail : Decodable {
+        let id: Int
         let name: String
         let weight: Int
         let height: Int
         let stats: [Stats]
         let sprites: Sprites
         let types: [Types]
+        let species: UrlName
     }
     
     struct Stats : Decodable {
-        let stat: Stat?
+        let stat: UrlName?
         let effort: Int
         let base_stat: Int
         
     }
     
-    struct Stat : Decodable {
-        let url: String
-        let name: String
-    }
     
     struct Sprites : Decodable { //url of the images (shiney, female, front, back...)
         let front_default: String?
@@ -60,15 +58,46 @@ public class Pokemon: NSObject {
     }
     
     struct Types : Decodable {
-        let slot: Int
-        let type: _Type
+        let slot: Int?
+        let type: UrlName?
     }
     
-    struct _Type : Decodable {
-        let url: String
-        let name: String
+    struct UrlName : Decodable {
+        let url: String?
+        let name: String?
     }
 
+    public struct Evolution : Decodable{
+        let chain: Chain
+    }
+    
+    struct Chain : Decodable {
+        let evolves_to: [EvolvesTo]?
+        let evolution_details: [EvolutionDetails]?
+        let species: UrlName?
+    }
+    
+    struct EvolvesTo : Decodable {
+        let species: UrlName?
+        let evolution_details:[EvolutionDetails]?
+        let evolves_to: [EvolvesTo]?
+    }
+    
+    struct EvolutionDetails : Decodable {
+        let min_level: String?
+    }
+    
+    public struct SpeciesDetail : Decodable {
+        let capture_rate: Int?
+        let varieties: [Varieties]?
+    }
+    
+    struct Varieties : Decodable {
+        let is_default: Bool?
+        let pokemon: UrlName?
+    }
+    
+    
     
     // Struct for the list of pokemons
     struct List: Decodable {

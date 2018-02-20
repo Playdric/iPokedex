@@ -20,6 +20,8 @@
                 <outlet property="heightLabel" destination="2wv-Ev-cmr" id="l6C-vC-PFX"/>
                 <outlet property="hpLabel" destination="uC1-SM-wuC" id="t5Q-Mm-ZiX"/>
                 <outlet property="imageBattle" destination="uNm-DY-ai8" id="ksb-9w-cJA"/>
+                <outlet property="imageNext" destination="BzZ-Th-xfQ" id="GZr-M5-mTQ"/>
+                <outlet property="imagePrevious" destination="QJI-at-mkE" id="1qr-P6-aWe"/>
                 <outlet property="nameLabel" destination="kRB-zg-FIq" id="2IJ-s3-7D8"/>
                 <outlet property="pokemonPicture" destination="Egr-Zk-aoi" id="Hk8-VR-9sv"/>
                 <outlet property="typeLabel" destination="zDh-Jv-dna" id="wlL-ba-jiD"/>
@@ -143,12 +145,22 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Next" translatesAutoresizingMaskIntoConstraints="NO" id="BzZ-Th-xfQ">
+                            <rect key="frame" x="315" y="103.5" width="50" height="50"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Previous" translatesAutoresizingMaskIntoConstraints="NO" id="QJI-at-mkE">
+                            <rect key="frame" x="10" y="103.5" width="50" height="50"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Egr-Zk-aoi" secondAttribute="trailing" id="3ZR-Qb-iEc"/>
+                        <constraint firstAttribute="trailing" secondItem="BzZ-Th-xfQ" secondAttribute="trailing" constant="10" id="CeM-vv-Dkr"/>
                         <constraint firstItem="Egr-Zk-aoi" firstAttribute="leading" secondItem="Tls-Em-LtK" secondAttribute="leading" id="Pe9-5D-HG9"/>
+                        <constraint firstItem="QJI-at-mkE" firstAttribute="leading" secondItem="Tls-Em-LtK" secondAttribute="leading" constant="10" id="SN2-h9-yZr"/>
+                        <constraint firstItem="BzZ-Th-xfQ" firstAttribute="centerY" secondItem="Egr-Zk-aoi" secondAttribute="centerY" id="eYQ-3w-A1f"/>
                         <constraint firstAttribute="bottom" secondItem="Egr-Zk-aoi" secondAttribute="bottom" id="l4A-lw-xs1"/>
+                        <constraint firstItem="QJI-at-mkE" firstAttribute="centerY" secondItem="Egr-Zk-aoi" secondAttribute="centerY" id="lQ0-Xx-8QM"/>
                         <constraint firstItem="Egr-Zk-aoi" firstAttribute="top" secondItem="Tls-Em-LtK" secondAttribute="top" id="ncq-zs-7NT"/>
                     </constraints>
                 </view>
@@ -169,6 +181,8 @@
     </objects>
     <resources>
         <image name="Battle" width="96" height="96"/>
+        <image name="Next" width="50" height="50"/>
         <image name="Pokeball" width="30" height="30"/>
+        <image name="Previous" width="50" height="50"/>
     </resources>
 </document>
